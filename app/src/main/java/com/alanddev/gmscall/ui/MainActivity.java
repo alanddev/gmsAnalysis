@@ -2,23 +2,50 @@ package com.alanddev.gmscall.ui;
 
 import android.app.NotificationManager;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.BitmapFactory;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
+import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
+import android.support.design.widget.TabLayout;
+import android.support.v4.view.ViewPager;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ImageView;
+import android.widget.TextView;
 
 import com.alanddev.gmscall.R;
+import com.alanddev.gmscall.adapter.TransSectionPagerAdapter;
 import com.alanddev.gmscall.controller.*;
 import com.alanddev.gmscall.helper.*;
+import com.alanddev.gmscall.model.Transactions;
 import com.alanddev.gmscall.util.*;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+
+    private TransSectionPagerAdapter mSectionsPagerAdapter;
+
+    /**
+     * The {@link ViewPager} that will host the section contents.
+     */
+    private ViewPager mViewPager;
+    private final int REQUEST_SETTING = 100;
+    private final int REQUEST_USER_EDIT = 101;
+    private SharedPreferences mShaPref;
+    private NavigationView navigationView;
+    private TabLayout tabLayout;
+    ImageView imageView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,14 +54,38 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_main));
+
+
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.setDrawerListener(toggle);
+        toggle.syncState();
+
+        navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);
+        setNavHeader(navigationView);
+
+        List<Transactions> transactionses = new ArrayList<Transactions>();
+        transactionses.add(new Transactions());
+        transactionses.add(new Transactions());
+        transactionses.add(new Transactions());
+        mSectionsPagerAdapter = new TransSectionPagerAdapter(getSupportFragmentManager(),transactionses);
+
+        // Set up the ViewPager with the sections adapter.
+        mViewPager = (ViewPager) findViewById(R.id.container);
+        mViewPager.setAdapter(mSectionsPagerAdapter);
+        /*if(transactionses.size()>0) {
+            mViewPager.setCurrentItem(transactionses.size() - 2);
+        }*/
+
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(mViewPager);
+        tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
+        tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
+
+
     }
 
     @Override
@@ -135,4 +186,43 @@ public class MainActivity extends AppCompatActivity {
         //Utils.createFolder(Constant.PATH_IMG);
     }
 
+    @Override
+    public boolean onNavigationItemSelected(MenuItem item) {
+        return false;
+    }
+
+    private void setNavHeader(NavigationView navigationView){
+        View header = navigationView.getHeaderView(0);
+       /* UserController controller = new UserController(this);
+        controller.open();
+        User user = controller.getId(1);
+        controller.close();*/
+
+        TextView txtWallet = (TextView) header.findViewById(R.id.txtWallet);
+        imageView = (ImageView)header.findViewById(R.id.imageView);
+        txtWallet.setText("anld");
+
+        /*if (!user.getImg().equals("")){
+            imageView.setImageBitmap(BitmapFactory.decodeFile(Constant.PATH_IMG + "/" + user.getImg()));
+        }else {
+            imageView.setImageResource(R.mipmap.avatar);
+        }*/
+        imageView.setImageResource(R.mipmap.avatar);
+
+        String naviheader = Utils.getCurrentNavHeader(this);
+
+        header.setBackgroundResource(getResources().getIdentifier(naviheader, "mipmap", getPackageName()));
+
+
+
+       /* imageView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent galleryIntent = new Intent(
+                        Intent.ACTION_PICK,
+                        android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(galleryIntent, Constant.GALLERY_USER_REQUEST);
+            }
+        } );*/
+    }
 }
