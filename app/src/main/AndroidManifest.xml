@@ -20,7 +20,7 @@
         </activity>
         <activity
             android:name=".ui.MainActivity"
-            android:label="@string/title_activity_main"
+            android:label="GSM Analysis"
             android:theme="@style/AppTheme.NoActionBar" />
     </application>
 

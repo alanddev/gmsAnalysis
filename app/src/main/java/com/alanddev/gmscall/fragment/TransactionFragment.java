@@ -31,7 +31,7 @@ public class TransactionFragment extends Fragment {
      * fragment.
      */
     private static final String ARG_SECTION_NUMBER = "section_number";
-    private static  List<Transactions> transactionses;
+   // private static  List<Transactions> transactionses;
     public TransactionFragment() {
     }
 
@@ -39,9 +39,9 @@ public class TransactionFragment extends Fragment {
      * Returns a new instance of this fragment for the given section
      * number.
      */
-    public static TransactionFragment newInstance(int sectionNumber,List<Transactions> datas) {
+    public static TransactionFragment newInstance(int sectionNumber) {
         TransactionFragment fragment = new TransactionFragment();
-        transactionses = datas;
+        //transactionses = datas;
         Bundle args = new Bundle();
         args.putInt(ARG_SECTION_NUMBER, sectionNumber);
         fragment.setArguments(args);
@@ -53,28 +53,13 @@ public class TransactionFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.trans_fragment_tabbed, container, false);
         Integer sectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
-        final Transactions transactions;
+        /*final Transactions transactions;
         if(transactionses!=null&&transactionses.size()>=sectionNumber) {
             transactions = transactionses.get(sectionNumber - 1);
         }else{
             transactions = new Transactions();
-        }
-        AmazingListView lsComposer = (AmazingListView) rootView.findViewById(R.id.lsttransaction);
-        final TransactionAdapter adapter = new TransactionAdapter(getActivity().getApplicationContext(), inflater, transactions.getItems());
-        lsComposer.setAdapter(adapter);
+        }*/
 
-        View header = inflater.inflate(R.layout.trans_header_list, null, false);
-        if(transactions.getItems()!=null&&transactions.getItems().size()>0){
-            TextView txtInflowAmt = (TextView)header.findViewById(R.id.txtInflowAmt);
-            Float fInAmount = transactions.getCalo();
-
-            NumberFormat formatter = new DecimalFormat("###,###,###,###.##");
-            String sInAmount =  formatter.format(fInAmount);
-
-            txtInflowAmt.setText(sInAmount + " calo");
-
-            lsComposer.addHeaderView(header);
-        }
 
        /* lsComposer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override

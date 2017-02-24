@@ -10,7 +10,7 @@
     <string name="today">Today</string>
     <string name="yesterday">Yesterday</string>
     <string name="tomorrow">Tomorrow</string>
-
+    <string name="title_activity_main">GSM Analysis</string>
     <string-array name="code_currency_array">
         <item>VND</item>
         <item>USD</item>

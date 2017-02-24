@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Gym Lover</string>
+    <string name="app_name">GSM Call</string>
     <string name="action_settings">Cấu hình</string>
     <string name="notify_afternoon">Chào buổi tối, Đừng quên cập nhật chi tiêu trong ngày của bạn nhé</string>
     <string name="notify_morning">Chào buổi sáng, Chúc bạn một ngày mới nhiều niềm vui</string>
@@ -53,7 +53,7 @@
     <string name="title_activity_workout">Workout</string>
     <string name="title_activity_user">Thông tin</string>
     <string name="title_activity_report">Báo cáo</string>
-    <string name="title_activity_main">Exercise Tracker</string>
+
     <string name="ex_back_barbellrow"></string>
     <string name="ex_abdominals_reverse"></string>
     <string name="grp_abdo">Bụng</string>
