@@ -45,4 +45,9 @@
     </string-array>
 
     <string name="db_path">/data/data/com.alanddev.gmscall/databases/</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="navi_header_default">indigo_pentagonal_background</string>
 </resources>
