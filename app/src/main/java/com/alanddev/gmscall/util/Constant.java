@@ -54,4 +54,10 @@ public class Constant {
     public static final String THEME_CURRENT = "THEME_CURRENT";
     public static final String NAV_HEADER_CURRENT = "NAV_HEADER_CURRENT";
     public static final String LANGUAGE_CURRENT = "LANGUAGE_CURRENT";
+
+
+
+    // update timer is 10000 ms
+    public static final int UPDATE_TIME = 10000;
+    public static final int UPDATE_TIME_LOC = 2000;
 }

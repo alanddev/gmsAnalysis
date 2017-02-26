@@ -10,6 +10,7 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -25,15 +26,18 @@ import android.widget.TextView;
 import com.alanddev.gmscall.R;
 import com.alanddev.gmscall.adapter.TransSectionPagerAdapter;
 import com.alanddev.gmscall.controller.*;
+import com.alanddev.gmscall.fragment.GMapFragment;
+import com.alanddev.gmscall.fragment.TransactionFragment;
 import com.alanddev.gmscall.helper.*;
 import com.alanddev.gmscall.model.Transactions;
 import com.alanddev.gmscall.util.*;
+import com.google.android.gms.maps.OnMapReadyCallback;
 
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
-public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener{
+public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
     private TransSectionPagerAdapter mSectionsPagerAdapter;
 
@@ -54,7 +58,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
         getSupportActionBar().setTitle(getResources().getString(R.string.title_activity_main));
 
 
@@ -67,14 +70,17 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
 
-        List<Transactions> transactionses = new ArrayList<Transactions>();
-        transactionses.add(new Transactions());
-        transactionses.add(new Transactions());
-        transactionses.add(new Transactions());
-        mSectionsPagerAdapter = new TransSectionPagerAdapter(getSupportFragmentManager(),transactionses);
-
+//        List<Transactions> transactionses = new ArrayList<Transactions>();
+        //transactionses.add(new Transactions());
+        //transactionses.add(new Transactions());
+        //transactionses.add(new Transactions());
+//        mSectionsPagerAdapter = new TransSectionPagerAdapter(getSupportFragmentManager(),transactionses);
         // Set up the ViewPager with the sections adapter.
+        mSectionsPagerAdapter = new TransSectionPagerAdapter(getSupportFragmentManager());
+        mSectionsPagerAdapter.addFrag(TransactionFragment.newInstance(mSectionsPagerAdapter.getCount() + 1),"CELL");
+        mSectionsPagerAdapter.addFrag(new GMapFragment(), "MAP");
         mViewPager = (ViewPager) findViewById(R.id.container);
+
         mViewPager.setAdapter(mSectionsPagerAdapter);
         /*if(transactionses.size()>0) {
             mViewPager.setCurrentItem(transactionses.size() - 2);

@@ -50,4 +50,13 @@
     <string name="navigation_drawer_close">Close navigation drawer</string>
 
     <string name="navi_header_default">indigo_pentagonal_background</string>
+
+    <string name="level_120">-120</string>
+    <string name="level_110">-110</string>
+    <string name="level_100">-100</string>
+    <string name="level_90">-90</string>
+    <string name="level_80">-80</string>
+    <string name="level_70">-70</string>
+    <string name="level_60">-60</string>
+    <string name="space">\u0020\u0020\u0020</string>
 </resources>

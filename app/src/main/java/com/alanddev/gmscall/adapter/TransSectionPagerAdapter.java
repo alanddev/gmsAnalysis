@@ -8,6 +8,7 @@ import android.support.v4.app.FragmentStatePagerAdapter;
 import com.alanddev.gmscall.fragment.TransactionFragment;
 import com.alanddev.gmscall.model.Transactions;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -16,6 +17,13 @@ import java.util.List;
  */
 public class TransSectionPagerAdapter extends FragmentStatePagerAdapter {
     //private List<Transactions> datas;
+    private final List<Fragment> mFragmentList = new ArrayList<>();
+    private final List<String> mFragmentTitleList = new ArrayList<>();
+
+    public TransSectionPagerAdapter(FragmentManager fm){
+        super(fm);
+    }
+
     public TransSectionPagerAdapter(FragmentManager fm, List<Transactions> datas) {
         super(fm);
         //this.datas = datas;
@@ -25,7 +33,8 @@ public class TransSectionPagerAdapter extends FragmentStatePagerAdapter {
     public Fragment getItem(int position) {
         // getItem is called to instantiate the fragment for the given page.
         // Return a PlaceholderFragment (defined as a static inner class below).
-        Fragment fragment = TransactionFragment.newInstance(position + 1);
+        //Fragment fragment = TransactionFragment.newInstance(position + 1);
+        Fragment fragment = mFragmentList.get(position);
         return fragment;
     }
 
@@ -37,23 +46,34 @@ public class TransSectionPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public int getCount() {
-        return 3;
+        return mFragmentList.size();
     }
+
+    public void addFrag(Fragment fragment,String title) {
+        mFragmentList.add(fragment);
+        mFragmentTitleList.add(title);
+    }
+
 
     @Override
     public CharSequence getPageTitle(int position) {
-        String title = "";
-        switch (position) {
-            case 0:
-                title = "VIEW 0";
-                break;
-            case 1:
-                title = "VIEW 1";
-                break;
-            case 2:
-                title = "VIEW 2";
-        }
-        return title;
+//        String title = "";
+//        switch (position) {
+//            case 0:
+//                title = "VIEW 0";
+//                break;
+//            case 1:
+//                title = "VIEW 1";
+//                break;
+//            case 2:
+//                title = "VIEW 2";
+//                break;
+//            case 3:
+//                title = "MAP";
+//                break;
+//        }
+//        return title;
+        return mFragmentTitleList.get(position);
     }
 
 
