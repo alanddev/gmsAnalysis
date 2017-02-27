@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/overview"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/colorWhite">
+
+    <TableRow
+        android:id="@+id/tableRow1"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/bandm_title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="LTE Band"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:textColor="@color/colorTextColor"/>
+        <TextView
+            android:id="@+id/bandm_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="B03|1800+"
+            android:layout_gravity="left"
+            android:textSize="12sp"
+            android:textColor="@color/colorTextColor"/>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/antenna_title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Antenna eNB Tx/Dev.Rx"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:textColor="@color/colorTextColor"/>
+
+        <TextView
+            android:id="@+id/antenna_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="2 x 2"
+            android:layout_gravity="left"
+            android:textSize="12sp"
+            android:textColor="@color/colorTextColor"/>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow3"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/earfcn_title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="EARFCN/Freq DL"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:textColor="@color/colorTextColor"/>
+
+        <TextView
+            android:id="@+id/earfcn_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="1503/ 1835.3 MHZ"
+            android:layout_gravity="left"
+            android:textSize="12sp"
+            android:textColor="@color/colorTextColor"/>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow4"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/bandwidth_title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Bandwidth"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:textColor="@color/colorTextColor"/>
+
+        <TextView
+            android:id="@+id/bandwidth_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="10 MHZ"
+            android:layout_gravity="left"
+            android:textSize="12sp"
+            android:textColor="@color/colorTextColor"/>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow5"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/carrier_title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Carrier RSSI"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:textColor="@color/colorTextColor"/>
+
+        <TextView
+            android:id="@+id/carrier_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="-51.9 dBm"
+            android:layout_gravity="left"
+            android:textSize="12sp"
+            android:textColor="@color/colorTextColor"/>
+    </TableRow>
+
+    <TableRow
+        android:id="@+id/tableRow6"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center">
+        <TextView
+            android:id="@+id/pusch_title"
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="PUSCH/PUCCH TxPower"
+            android:textSize="13sp"
+            android:textStyle="bold"
+            android:layout_gravity="right"
+            android:textColor="@color/colorTextColor"/>
+
+        <TextView
+            android:id="@+id/pusch_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="-51.9 dBm"
+            android:layout_gravity="left"
+            android:textSize="12sp"
+            android:textColor="@color/colorTextColor"/>
+    </TableRow>
+
+</TableLayout>

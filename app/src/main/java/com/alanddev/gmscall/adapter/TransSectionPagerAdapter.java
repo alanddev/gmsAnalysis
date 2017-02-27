@@ -57,22 +57,6 @@ public class TransSectionPagerAdapter extends FragmentStatePagerAdapter {
 
     @Override
     public CharSequence getPageTitle(int position) {
-//        String title = "";
-//        switch (position) {
-//            case 0:
-//                title = "VIEW 0";
-//                break;
-//            case 1:
-//                title = "VIEW 1";
-//                break;
-//            case 2:
-//                title = "VIEW 2";
-//                break;
-//            case 3:
-//                title = "MAP";
-//                break;
-//        }
-//        return title;
         return mFragmentTitleList.get(position);
     }
 

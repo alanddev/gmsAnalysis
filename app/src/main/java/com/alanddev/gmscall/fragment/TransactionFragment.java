@@ -1,26 +1,14 @@
 package com.alanddev.gmscall.fragment;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 
 import com.alanddev.gmscall.R;
-import com.alanddev.gmscall.adapter.TransactionAdapter;
-import com.alanddev.gmscall.helper.MwSQLiteHelper;
-import com.alanddev.gmscall.model.Transaction;
-import com.alanddev.gmscall.model.Transactions;
-import com.foound.widget.AmazingListView;
-
-import java.text.DecimalFormat;
-import java.text.NumberFormat;
-import java.util.List;
 
 /**
  * Created by ANLD on 18/11/2015.
@@ -51,43 +39,9 @@ public class TransactionFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        View rootView = inflater.inflate(R.layout.trans_fragment_tabbed, container, false);
-        Integer sectionNumber = getArguments().getInt(ARG_SECTION_NUMBER);
-        /*final Transactions transactions;
-        if(transactionses!=null&&transactionses.size()>=sectionNumber) {
-            transactions = transactionses.get(sectionNumber - 1);
-        }else{
-            transactions = new Transactions();
-        }*/
+        View rootView = inflater.inflate(R.layout.fragment_main, container, false);
 
-
-       /* lsComposer.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View arg1, int position, long arg3) {
-                Transaction transaction= (Transaction)adapter.getItem(position-1);
-                Intent intent = new Intent(getContext(), TransactionDetailActivity.class);
-                intent.putExtra(MwSQLiteHelper.COLUMN_TRANS_ID,transaction.getId());
-                startActivityForResult(intent, Constant.TRANS_DETAIL_REQUEST);
-            }
-        });*/
-
-        /*header.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (transactions.getItems() != null && transactions.getItems().size() > 0) {
-                    TransactionDay transactionDay = transactions.getItems().get(0);
-                    if (transactionDay.getItems() != null && transactionDay.getItems().size() > 0) {
-                        Transaction transactionDetail = transactionDay.getItems().get(0);
-                        SharedPreferences mShaPref = Utils.getSharedPreferences(getContext());
-                        int viewtype = mShaPref.getInt(Constant.VIEW_TYPE, 0);
-                        Intent intent = new Intent(getContext(), ReportActivity.class);
-                        intent.putExtra(Constant.VIEW_TYPE, viewtype);
-                        intent.putExtra(Constant.PUT_EXTRA_DATE, transactionDetail.getDate());
-                        startActivity(intent);
-                    }
-                }
-            }
-        });*/
+        //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
         return rootView;
     }
 }
