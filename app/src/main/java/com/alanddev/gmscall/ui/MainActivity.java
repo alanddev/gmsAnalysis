@@ -26,10 +26,12 @@ import android.widget.TextView;
 import com.alanddev.gmscall.R;
 import com.alanddev.gmscall.adapter.TransSectionPagerAdapter;
 import com.alanddev.gmscall.controller.*;
+import com.alanddev.gmscall.fragment.CellFragment;
 import com.alanddev.gmscall.fragment.CommandFragment;
 import com.alanddev.gmscall.fragment.GMapFragment;
 import com.alanddev.gmscall.fragment.TransactionFragment;
 import com.alanddev.gmscall.helper.*;
+import com.alanddev.gmscall.model.Network;
 import com.alanddev.gmscall.model.Transactions;
 import com.alanddev.gmscall.util.*;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -76,11 +78,13 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         //transactionses.add(new Transactions());
         //transactionses.add(new Transactions());
 //        mSectionsPagerAdapter = new TransSectionPagerAdapter(getSupportFragmentManager(),transactionses);
+
+        NwConst.getInstance(this);
         // Set up the ViewPager with the sections adapter.
         mSectionsPagerAdapter = new TransSectionPagerAdapter(getSupportFragmentManager());
         mSectionsPagerAdapter.addFrag(TransactionFragment.newInstance(mSectionsPagerAdapter.getCount() + 1),"CELL");
         mSectionsPagerAdapter.addFrag(new CommandFragment(),"COMMAND");
-
+        mSectionsPagerAdapter.addFrag(new CellFragment(),"INFO");
         mSectionsPagerAdapter.addFrag(new GMapFragment(), "MAP");
         mViewPager = (ViewPager) findViewById(R.id.container);
 

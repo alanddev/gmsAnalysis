@@ -28,6 +28,55 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_CUR_SYMBOL = "symbol";
     public static final String COLUMN_CUR_DISPLAY = "display";
 
+    public static final String TABLE_NETWORK = "networks";
+    //public static final String COLUMN_ID = "_id";
+    public static final String COLUMN_LONGITUDE = "longitude";
+    public static final String COLUMN_LATITUDE = "latitude";
+    public static final String COLUMN_MCC = "mcc";
+    public static final String COLUMN_MNC = "mnc";
+    public static final String COLUMN_OPERATOR = "operator";
+    public static final String COLUMN_LAC = "lac";
+    public static final String COLUMN_CID = "cid";
+    public static final String COLUMN_CELLID = "cellID";
+    public static final String COLUMN_RNC = "rnc";
+    public static final String COLUMN_DBM = "dBm";
+    public static final String COLUMN_ECIO = "ecIO";
+    public static final String COLUMN_SNR = "snr";
+    public static final String COLUMN_TIME = "time";
+    public static final String COLUMN_ALTITUDE = "altitude";
+    public static final String COLUMN_GROUND = "ground";
+    public static final String COLUMN_HEIGHT = "height";
+    public static final String COLUMN_NWACCURACY = "nwAccuracy";
+    public static final String COLUMN_DATA = "data";
+    public static final String COLUMN_SPEED = "speed";
+
+    // 20 fields
+    // Database creation sql statement
+    private static final String TABLE_NETWORK_CREATE = "create table "
+            + TABLE_NETWORK + "("
+            + COLUMN_DATA + " text not null, "
+            + COLUMN_LONGITUDE + " real not null, "
+            + COLUMN_LATITUDE + " real not null, "
+            + COLUMN_TIME + " text not null, "
+            + COLUMN_MCC + " text not null, "
+            + COLUMN_MNC + " text not null , "
+            + COLUMN_OPERATOR + " text not null, "
+            + COLUMN_LAC + " integer, "
+            + COLUMN_CID + " integer, "
+            + COLUMN_CELLID + " integer, "
+            + COLUMN_RNC + " integer, "
+            + COLUMN_DBM + " real, "
+            + COLUMN_ECIO + " real, "
+            + COLUMN_SNR + " real, "
+            + COLUMN_ALTITUDE + " real, "
+            + COLUMN_GROUND + " real, "
+            + COLUMN_HEIGHT + " real, "
+            + COLUMN_NWACCURACY + " real ,"
+            + COLUMN_SPEED + " real , "
+            + "PRIMARY KEY ( " + COLUMN_DATA + ", " + COLUMN_LONGITUDE + ", " + COLUMN_LATITUDE + ") "
+            + ");";
+
+
     public static final String DATABASE_NAME = "gmscall.db";
     private static final int DATABASE_VERSION = 1;
 
@@ -65,6 +114,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
         sqLiteDatabase = database;
         database.execSQL(CALL_ENTRY_CREATE);
         database.execSQL(CUR_CREATE);
+        database.execSQL(TABLE_NETWORK_CREATE);
     }
 
 
@@ -74,6 +124,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
 		        "Upgrading database from version " + oldVersion + " to "
 		            + newVersion + ", which will destroy all old data");*/
         //sqLiteDatabase = db;
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_NETWORK);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CALL_ENTRY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CUR);
         onCreate(db);

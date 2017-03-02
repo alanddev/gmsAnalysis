@@ -59,4 +59,43 @@
     <string name="level_70">-70</string>
     <string name="level_60">-60</string>
     <string name="space">\u0020\u0020\u0020</string>
+
+    <string name="time">Time</string>
+    <string name="lac">LAC</string>
+    <string name="node">Node</string>
+    <string name="cellID">CELLID</string>
+
+    <string name="level">Level</string>
+    <string name="qual">Qual</string>
+
+    <string name="type">Type</string>
+    <string name="serv">Serv,s</string>
+    <string name="operator">Operator</string>
+    <string name="mcc">MCC</string>
+    <string name="rnc">RNC</string>
+    <string name="mnc">MNC</string>
+    <string name="rscp">RSCP</string>
+    <string name="longitude">Longitude</string>
+    <string name="latitude">Latitude</string>
+    <string name="speed">Speed</string>
+    <string name="height">Height</string>
+    <string name="altitude">Altitude</string>
+    <string name="ground">Ground</string>
+    <string name="ul">UL</string>
+    <string name="dl">DL</string>
+    <string name="data">Data</string>
+    <string name="gps_accuracy">GPS Accuracy</string>
+    <string name="nw_accuracy">NW Accuracy</string>
+    <string name="ecno">ECNO</string>
+    <string name="snr">SNR</string>
+    <string name="serving_time">Serving time</string>
+
+    <string name="snippet">Snippet</string>
+    <string name="action_bluetooth">Send file</string>
+    <string name="find">Search for Devices</string>
+    <string name="bluetooth_setting">Bluetooth device chooser</string>
+    <string name="paired_device">Paired Devices</string>
+    <string name="avail_device">Available Devices</string>
+
+
 </resources>
