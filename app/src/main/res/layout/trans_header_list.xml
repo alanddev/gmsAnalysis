@@ -116,7 +116,10 @@
             android:textSize="14sp"
             android:textStyle="bold"
             android:textColor="@color/colorTextColor"/>
-
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        >
         <ProgressBar
             style="?android:attr/progressBarStyleHorizontal"
             android:layout_width="match_parent"
@@ -126,6 +129,20 @@
             android:layout_centerVertical="true"
             android:progress="40"
             android:max="100" />
+
+        <TextView
+            android:id="@+id/rsrp_progress_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_alignLeft="@+id/rsrp_value"
+            android:layout_alignRight="@+id/rsrp_value"
+            android:layout_alignTop="@+id/rsrp_value"
+            android:layout_alignBottom="@+id/rsrp_value"
+            android:text="15"
+            android:textColor="@color/colorWhite"/>
+    </RelativeLayout>
+
         <TextView
             android:id="@+id/tac_title"
             android:layout_width="wrap_content"
