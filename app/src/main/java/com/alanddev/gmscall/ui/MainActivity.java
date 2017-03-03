@@ -26,6 +26,7 @@ import android.widget.TextView;
 import com.alanddev.gmscall.R;
 import com.alanddev.gmscall.adapter.TransSectionPagerAdapter;
 import com.alanddev.gmscall.controller.*;
+import com.alanddev.gmscall.fragment.CallFragment;
 import com.alanddev.gmscall.fragment.CellFragment;
 import com.alanddev.gmscall.fragment.CommandFragment;
 import com.alanddev.gmscall.fragment.GMapFragment;
@@ -85,6 +86,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mSectionsPagerAdapter.addFrag(TransactionFragment.newInstance(mSectionsPagerAdapter.getCount() + 1),"CELL");
         mSectionsPagerAdapter.addFrag(new CommandFragment(),"COMMAND");
         mSectionsPagerAdapter.addFrag(new CellFragment(),"INFO");
+        mSectionsPagerAdapter.addFrag(new CallFragment(),"CALL");
         mSectionsPagerAdapter.addFrag(new GMapFragment(), "MAP");
         mViewPager = (ViewPager) findViewById(R.id.container);
 
