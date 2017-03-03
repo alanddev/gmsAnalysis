@@ -1,6 +1,7 @@
 package com.alanddev.gmscall.adapter;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,13 +61,13 @@ public class CellAdapter extends BaseAdapter {
             viewHolder.txtnoname = ((TextView) convertView
                     .findViewById(R.id.noname_value));
             viewHolder.txtband = ((TextView) convertView
-                    .findViewById(R.id.band_value));
+                    .findViewById(R.id.bandc_value));
             viewHolder.txtearfcn = ((TextView) convertView
-                    .findViewById(R.id.earfcn_value));
+                    .findViewById(R.id.earfcnc_value));
             viewHolder.txtpci = ((TextView) convertView
-                    .findViewById(R.id.pci_value));
+                    .findViewById(R.id.pcic_value));
             viewHolder.prorsrp = ((ProgressBar) convertView
-                    .findViewById(R.id.rsrq_value));
+                    .findViewById(R.id.rsrp_value));
             viewHolder.prorsrq = ((ProgressBar) convertView
                     .findViewById(R.id.rsrq_value));
 
@@ -74,12 +75,16 @@ public class CellAdapter extends BaseAdapter {
         } else {
             viewHolder = (Viewholder) convertView.getTag();
         }
+
+        if(viewHolder.txtband==null){
+            Log.d("TAG", "getView: ");
+        }
         viewHolder.txtnoname.setText("s");
-        viewHolder.txtband.setText(cell.getBand());
-        viewHolder.txtearfcn.setText(cell.getEarfcn());
-        viewHolder.txtpci.setText(cell.getPci());
+        viewHolder.txtband.setText(String.valueOf(cell.getBand()));
+        viewHolder.txtearfcn.setText(String.valueOf(cell.getEarfcn()));
+        viewHolder.txtpci.setText(String.valueOf(cell.getPci()));
         viewHolder.prorsrp.setProgress(Math.round(cell.getRsrp()));
-        viewHolder.prorsrq.setProgress(Math.round(cell.getRsrq()/10));
+        viewHolder.prorsrq.setProgress(Math.round(cell.getRsrq()));
         /*if(progress<25){
             viewHolder.progressBar.setProgressDrawable(mContext.getResources().getDrawable(R.drawable.progess_drawable_25));
         }else if(progress<50){

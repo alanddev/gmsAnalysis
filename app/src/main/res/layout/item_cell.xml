@@ -2,27 +2,26 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
-    <TableRow
-        android:id="@+id/tableRow2"
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
-        android:layout_gravity="center_horizontal"
-        android:layout_marginTop="3dp">
+    android:orientation="horizontal">
+
 
         <TextView
             android:id="@+id/noname_value"
-            android:layout_width="wrap_content"
+            android:layout_width="30dp"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:textSize="12sp"
             android:textColor="#C1C1C1"/>
 
         <TextView
-            android:id="@+id/band_value"
+            android:id="@+id/bandc_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:text="Band"
             android:textSize="12sp"
             android:textColor="#C1C1C1"/>
@@ -31,7 +30,9 @@
             android:id="@+id/earfcnc_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:text="EARFCN"
             android:textSize="12sp"
 
@@ -41,26 +42,66 @@
             android:id="@+id/pcic_value"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="15dp"
+            android:gravity="center_horizontal"
+            android:layout_marginLeft="5dp"
+            android:layout_marginRight="5dp"
             android:text="PCI"
             android:textSize="12sp"
             android:textColor="#C1C1C1"/>
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
         <ProgressBar
-            android:id="@+id/rsrpc_value"
-            style="?android:attr/progressBarStyleHorizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="10dp"
-            android:layout_marginLeft="15dp"
-            android:max="100"/>
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:id="@+id/rsrp_value"
+            android:progress="75"
+            android:max="100"
+            android:layout_height="15dp"
+            android:layout_width="80dp"
+            android:progressDrawable="@drawable/progess_drawable_rsrp"/>
 
-        <ProgressBar
-            android:id="@+id/rsrq_value"
-            style="?android:attr/progressBarStyleHorizontal"
+        <TextView
+            android:id="@+id/rsrp_progress_title"
             android:layout_width="wrap_content"
-            android:layout_height="10dp"
-            android:layout_marginLeft="15dp"
-            android:max="10"/>
-    </TableRow>
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_alignLeft="@+id/rsrp_value"
+            android:layout_alignRight="@+id/rsrp_value"
+            android:layout_alignTop="@+id/rsrp_value"
+            android:layout_alignBottom="@+id/rsrp_value"
+            android:text="-75.7"
+            android:textColor="@color/colorWhite"/>
+        </RelativeLayout>
+
+
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="5dp"
+        android:layout_marginRight="5dp">
+        <ProgressBar
+            style="@android:style/Widget.ProgressBar.Horizontal"
+            android:id="@+id/rsrq_value"
+            android:max="10"
+            android:layout_height="15dp"
+            android:layout_width="80dp"
+            android:progressDrawable="@drawable/progess_drawable_sinr"/>
+
+        <TextView
+            android:id="@+id/rsrq_progress_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_alignLeft="@+id/rsrq_value"
+            android:layout_alignRight="@+id/rsrq_value"
+            android:layout_alignTop="@+id/rsrq_value"
+            android:layout_alignBottom="@+id/rsrq_value"
+            android:text="6.8"
+            android:textColor="@color/colorWhite"/>
+    </RelativeLayout>
+
 
 </LinearLayout>

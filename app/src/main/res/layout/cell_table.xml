@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:id="@+id/overview"
-    android:layout_width="fill_parent"
+    android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#303030"
-    android:layout_marginTop="15dp">
+    android:orientation="vertical">
 
     <LinearLayout
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:layout_marginTop="10dp">
         <TextView
             android:id="@+id/title"
             android:layout_width="wrap_content"
@@ -21,7 +22,7 @@
             android:textColor="#C1C1C1"/>
     </LinearLayout>
 
-    <TableRow
+    <LinearLayout
         android:id="@+id/tableRow2"
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
@@ -30,9 +31,11 @@
 
             <TextView
                 android:id="@+id/noname_title"
-                android:layout_width="wrap_content"
+                android:layout_width="30dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorTextColor"/>
@@ -41,7 +44,9 @@
                 android:id="@+id/bandc_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:text="Band"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -51,7 +56,9 @@
                 android:id="@+id/earfcnc_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:text="EARFCN"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -61,7 +68,9 @@
                 android:id="@+id/pcic_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:text="PCI"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -71,7 +80,9 @@
                 android:id="@+id/rsrpc_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:text="RSRP"
                 android:textSize="14sp"
                 android:textStyle="bold"
@@ -81,15 +92,17 @@
                 android:id="@+id/rsrq_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="15dp"
+                android:gravity="center_horizontal"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"
                 android:text="RSRQ"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorTextColor"/>
 
-    </TableRow>
+    </LinearLayout>
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/lstcell"></ListView>
-</TableLayout>
+</LinearLayout>
