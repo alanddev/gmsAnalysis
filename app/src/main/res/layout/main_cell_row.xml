@@ -3,7 +3,7 @@
     android:id="@+id/overview"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorWhite">
+    android:background="#303030">
 
     <TableRow
         android:id="@+id/tableRow1"
@@ -28,7 +28,7 @@
             android:text="B03|1800+"
             android:layout_gravity="left"
             android:textSize="12sp"
-            android:textColor="@color/colorTextColor"/>
+            android:textColor="#C1C1C1"/>
     </TableRow>
 
     <TableRow
@@ -55,7 +55,7 @@
             android:text="2 x 2"
             android:layout_gravity="left"
             android:textSize="12sp"
-            android:textColor="@color/colorTextColor"/>
+            android:textColor="#C1C1C1"/>
     </TableRow>
 
     <TableRow
@@ -82,7 +82,7 @@
             android:text="1503/ 1835.3 MHZ"
             android:layout_gravity="left"
             android:textSize="12sp"
-            android:textColor="@color/colorTextColor"/>
+            android:textColor="#C1C1C1"/>
     </TableRow>
 
     <TableRow
@@ -109,7 +109,7 @@
             android:text="10 MHZ"
             android:layout_gravity="left"
             android:textSize="12sp"
-            android:textColor="@color/colorTextColor"/>
+            android:textColor="#C1C1C1"/>
     </TableRow>
 
     <TableRow
@@ -136,7 +136,7 @@
             android:text="-51.9 dBm"
             android:layout_gravity="left"
             android:textSize="12sp"
-            android:textColor="@color/colorTextColor"/>
+            android:textColor="#C1C1C1"/>
     </TableRow>
 
     <TableRow
@@ -163,7 +163,7 @@
             android:text="-51.9 dBm"
             android:layout_gravity="left"
             android:textSize="12sp"
-            android:textColor="@color/colorTextColor"/>
+            android:textColor="#C1C1C1"/>
     </TableRow>
 
 </TableLayout>

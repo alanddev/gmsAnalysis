@@ -5,9 +5,6 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentStatePagerAdapter;
 
 
-import com.alanddev.gmscall.fragment.TransactionFragment;
-import com.alanddev.gmscall.model.Transactions;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +21,10 @@ public class TransSectionPagerAdapter extends FragmentStatePagerAdapter {
         super(fm);
     }
 
-    public TransSectionPagerAdapter(FragmentManager fm, List<Transactions> datas) {
+   /* public TransSectionPagerAdapter(FragmentManager fm, List<Transactions> datas) {
         super(fm);
         //this.datas = datas;
-    }
+    }*/
 
     @Override
     public Fragment getItem(int position) {

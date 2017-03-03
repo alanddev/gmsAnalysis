@@ -6,10 +6,10 @@
     <color name="colorInflow">#0000FF</color>
     <color name="colorOutFlow">#FF0000</color>
     <color name="colorNetAmount">#000000</color>
-    <color name="colorNote">#606060</color>
+    <color name="colorNote">#737373</color>
     <color name="colorBlack">#000000</color>
     <color name="colorDivider">#D0D0D0</color>
-    <color name="colorTextColor">#303030</color>
+    <color name="colorTextColor">#737373</color>
     <color name="colorWhite">#FFFFFF</color>
     <color name="colorfab">#5500FF</color>
     <color name="colorTomato">#FF6347</color>

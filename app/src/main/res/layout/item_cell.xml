@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+    <TableRow
+        android:id="@+id/tableRow2"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="3dp">
+
+        <TextView
+            android:id="@+id/noname_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:textSize="12sp"
+            android:textColor="#C1C1C1"/>
+
+        <TextView
+            android:id="@+id/bandc_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="Band"
+            android:textSize="12sp"
+            android:textColor="#C1C1C1"/>
+
+        <TextView
+            android:id="@+id/earfcnc_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="EARFCN"
+            android:textSize="12sp"
+
+            android:textColor="#C1C1C1"/>
+
+        <TextView
+            android:id="@+id/pcic_value"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="15dp"
+            android:text="PCI"
+            android:textSize="12sp"
+            android:textColor="#C1C1C1"/>
+
+        <ProgressBar
+            android:id="@+id/rsrpc_value"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_marginLeft="15dp"
+            android:max="100"/>
+
+        <ProgressBar
+            android:id="@+id/rsrq_value"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:layout_marginLeft="15dp"
+            android:max="10"/>
+    </TableRow>
+
+</LinearLayout>

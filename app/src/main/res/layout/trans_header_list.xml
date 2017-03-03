@@ -3,7 +3,7 @@
     android:id="@+id/overview"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorDivider">
+    android:background="#424242">
 
     <TableRow
         android:id="@+id/tableRow1"
@@ -35,7 +35,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="1503"
                 android:textSize="12sp"
-                android:textColor="@color/colorTextColor"/>
+                android:textColor="@color/colorWhite"/>
             <TextView
                 android:id="@+id/plmn_title"
                 android:layout_width="wrap_content"
@@ -52,7 +52,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="452/01"
                 android:textSize="12sp"
-                android:textColor="@color/colorTextColor"/>
+                android:textColor="@color/colorWhite"/>
         </LinearLayout>
 
 
@@ -80,7 +80,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="1503"
                 android:textSize="12sp"
-                android:textColor="@color/colorTextColor"/>
+                android:textColor="@color/colorWhite"/>
             <TextView
                 android:id="@+id/band_title"
                 android:layout_width="wrap_content"
@@ -97,7 +97,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="B03"
                 android:textSize="12sp"
-                android:textColor="@color/colorTextColor"/>
+                android:textColor="@color/colorWhite"/>
         </LinearLayout>
 
     <LinearLayout
@@ -142,7 +142,7 @@
             android:layout_marginLeft="15dp"
             android:text="16010"
             android:textSize="12sp"
-            android:textColor="@color/colorTextColor"/>
+            android:textColor="@color/colorWhite"/>
     </LinearLayout>
 
         <LinearLayout
@@ -169,7 +169,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="1503"
                 android:textSize="12sp"
-                android:textColor="@color/colorTextColor"/>
+                android:textColor="@color/colorWhite"/>
             <TextView
                 android:id="@+id/ecellid_title"
                 android:layout_width="wrap_content"
@@ -186,7 +186,7 @@
                 android:layout_marginLeft="15dp"
                 android:text="16010"
                 android:textSize="12sp"
-                android:textColor="@color/colorTextColor"/>
+                android:textColor="@color/colorWhite"/>
         </LinearLayout>
     </TableRow>
 </TableLayout>

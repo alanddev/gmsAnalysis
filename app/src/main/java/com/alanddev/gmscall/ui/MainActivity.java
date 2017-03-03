@@ -1,16 +1,11 @@
 package com.alanddev.gmscall.ui;
 
-import android.app.NotificationManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.NavigationView;
-import android.support.design.widget.Snackbar;
 import android.support.design.widget.TabLayout;
-import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
@@ -21,9 +16,11 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.TextView;
 
 import com.alanddev.gmscall.R;
+import com.alanddev.gmscall.adapter.CellAdapter;
 import com.alanddev.gmscall.adapter.TransSectionPagerAdapter;
 import com.alanddev.gmscall.controller.*;
 import com.alanddev.gmscall.fragment.CallFragment;
@@ -32,14 +29,11 @@ import com.alanddev.gmscall.fragment.CommandFragment;
 import com.alanddev.gmscall.fragment.GMapFragment;
 import com.alanddev.gmscall.fragment.TransactionFragment;
 import com.alanddev.gmscall.helper.*;
-import com.alanddev.gmscall.model.Network;
-import com.alanddev.gmscall.model.Transactions;
+import com.alanddev.gmscall.model.Cell;
 import com.alanddev.gmscall.util.*;
-import com.google.android.gms.maps.OnMapReadyCallback;
 
 import java.io.File;
 import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -99,6 +93,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         tabLayout.setupWithViewPager(mViewPager);
         tabLayout.setTabMode(TabLayout.MODE_SCROLLABLE);
         tabLayout.setSelectedTabIndicatorColor(Color.WHITE);
+
 
 
     }
@@ -205,17 +200,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     public boolean onNavigationItemSelected(MenuItem item) {
         int id = item.getItemId();
 
-        if (id == R.id.nav_camera) {
+        if (id == R.id.nav_primary_sim) {
             // Handle the camera action
-        } else if (id == R.id.nav_gallery) {
+        } else if (id == R.id.nav_second_sim) {
 
-        } else if (id == R.id.nav_slideshow) {
-
-        } else if (id == R.id.nav_manage) {
-
-        } else if (id == R.id.nav_share) {
-
-        } else if (id == R.id.nav_send) {
+        } else if (id == R.id.nav_load_logfile) {
 
         }
 

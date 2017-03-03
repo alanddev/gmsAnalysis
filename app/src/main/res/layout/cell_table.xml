@@ -3,7 +3,7 @@
     android:id="@+id/overview"
     android:layout_width="fill_parent"
     android:layout_height="wrap_content"
-    android:background="@color/colorWhite"
+    android:background="#303030"
     android:layout_marginTop="15dp">
 
     <LinearLayout
@@ -17,7 +17,8 @@
             android:text="LTE Cell Table"
             android:textSize="15sp"
             android:textStyle="bold"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:textColor="#C1C1C1"/>
     </LinearLayout>
 
     <TableRow
@@ -87,4 +88,8 @@
                 android:textColor="@color/colorTextColor"/>
 
     </TableRow>
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/lstcell"></ListView>
 </TableLayout>
