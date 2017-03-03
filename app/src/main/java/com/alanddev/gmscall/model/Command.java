@@ -14,15 +14,24 @@ public class Command  extends Model {
     private String user;
     private String pass;
     private String status;
+    private String img;
 
     public Command(){
 
     }
 
-    public Command(int id, String cmd, String server){
+    public Command(int id, String cmd, String server,String elapsedTime, String stream, String numberRun, String timeToNext, String user, String pass, String status, String img){
         this.id = id;
         this.cmd = cmd;
         this.server = server;
+        this.timeTest = elapsedTime;
+        this.stream = stream;
+        this.number = numberRun;
+        this.timeToNext = timeToNext;
+        this.user = user;
+        this.pass = pass;
+        this.status = status;
+        this.img = img;
     }
     public int getId() {
         return id;
@@ -102,5 +111,13 @@ public class Command  extends Model {
 
     public void setStatus(String status) {
         this.status = status;
+    }
+
+    public String getImg() {
+        return img;
+    }
+
+    public void setImg(String img) {
+        this.img = img;
     }
 }

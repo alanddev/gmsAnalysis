@@ -40,12 +40,27 @@ public class CommandAdapter extends ArrayAdapter<Command> {
         // Lookup view for data population
         TextView tvCmd = (TextView) convertView.findViewById(R.id.cmd);
         TextView tvServer = (TextView) convertView.findViewById(R.id.server);
+        TextView tvElapsedTime = (TextView) convertView.findViewById(R.id.elapseTime);
+        TextView tvStream = (TextView) convertView.findViewById(R.id.stream);
+        TextView tvNumberRun = (TextView) convertView.findViewById(R.id.numberRun);
+        TextView tvtimeNext = (TextView) convertView.findViewById(R.id.timeNext);
+        TextView tvUser = (TextView) convertView.findViewById(R.id.user);
+        TextView tvPass = (TextView) convertView.findViewById(R.id.pass);
+        TextView tvStatus = (TextView) convertView.findViewById(R.id.status);
+
         ImageView imgIcon = (ImageView)convertView.findViewById(R.id.icon);
         // Populate the data into the template view using the data object
         tvCmd.setText(command.getId()+":"+command.getCmd());
-        tvServer.setText(command.getServer());
+        tvServer.setText("server:" + command.getServer());
+        tvElapsedTime.setText("Time:"+command.getTimeTest());
+        tvStream.setText("Stream:" + command.getStream());
+        tvNumberRun.setText(command.getNumber());
+        tvtimeNext.setText(command.getTimeToNext());
+        tvUser.setText(command.getUser());
+        tvPass.setText(command.getPass());
+        tvStatus.setText(command.getStatus());
         //int temp = position%5+1;
-        imgIcon.setImageResource(mContext.getResources().getIdentifier("star", "mipmap", mContext.getPackageName()));
+        imgIcon.setImageResource(mContext.getResources().getIdentifier(command.getImg(), "mipmap", mContext.getPackageName()));
 
         // Return the completed view to render on screen
         return convertView;
