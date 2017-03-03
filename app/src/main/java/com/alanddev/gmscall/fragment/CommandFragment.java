@@ -14,7 +14,6 @@ import android.widget.ListView;
 import com.alanddev.gmscall.R;
 import com.alanddev.gmscall.adapter.CommandAdapter;
 import com.alanddev.gmscall.model.Command;
-import com.foound.widget.AmazingListView;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;

@@ -40,6 +40,7 @@ import com.alanddev.gmscall.util.Constant;
 import com.alanddev.gmscall.util.NwConst;
 import com.alanddev.gmscall.util.NwUtils;
 import com.alanddev.gmscall.R;
+import com.google.android.gms.maps.model.LatLng;
 
 public class CellFragment extends Fragment {
 	
@@ -51,6 +52,9 @@ public class CellFragment extends Fragment {
 	private int lac;
 	private int cellID;
 	private int RNC;
+	private int rsrp;
+	private int rsrq;
+	private int cqi;
 	private double dBm;
 	private double ecIO;
 	private double SNR;
@@ -101,6 +105,9 @@ public class CellFragment extends Fragment {
 	private TextView tvSpeed;
 	private TextView tvAltitude;	
 	private TextView tvHeight;
+	private TextView tvRsrp;
+	private TextView tvRsrq;
+	private TextView tvCqi;
 	
 	private TelephonyManager tel;
 	private int nRow;
@@ -178,7 +185,7 @@ public class CellFragment extends Fragment {
 		} 
 
 
-		currentLocation = null;
+
 		List<String> providers = locationManager.getProviders(true);
 		// order is always (passive, gps, network, gps_bluetooth)
 		for (int i=providers.size()-1; i>=0; i--) {
@@ -188,9 +195,13 @@ public class CellFragment extends Fragment {
 			}catch(SecurityException e){
 
 			}
-				if (currentLocation != null) break;
+			if (currentLocation != null) break;
 		}
-		
+		if (currentLocation == null) {
+			currentLocation = new Location("");
+			currentLocation.setLatitude(21.0345);
+			currentLocation.setLongitude(105.827);
+		}
         longitude = currentLocation.getLongitude();
         latitude = currentLocation.getLatitude();
     	altitude = currentLocation.getAltitude();
@@ -226,7 +237,10 @@ public class CellFragment extends Fragment {
         		dBm = getdBM();
         		ecIO = getEcIo();
         		SNR = getSNR();
-        		net.setdBm(dBm);
+        		rsrp = getLteRsrp();
+				rsrq = getLteRsrq();
+				cqi = getLteCqi();
+				net.setdBm(dBm);
         		net.setEcIO(ecIO);
         		net.setSNR(SNR);
                 net.setMyLatitude(latitude);
@@ -234,6 +248,7 @@ public class CellFragment extends Fragment {
                 net.setAltitude(altitude);
                 net.setGround(ground);
                 net.setSpeed(speed);
+				net.setType(getMobileNetwork());
                 setTitleValue();
         		long tmpTime = System.currentTimeMillis();
         		if (tmpTime - currentTime >= Constant.UPDATE_TIME){
@@ -311,6 +326,9 @@ public class CellFragment extends Fragment {
     	tvAltitude = (TextView)v.findViewById(R.id.altitude);
     	
     	tvData = (TextView)v.findViewById(R.id.data);
+		tvRsrp = (TextView)v.findViewById(R.id.rsrp);
+		tvRsrq = (TextView)v.findViewById(R.id.rsrq);
+		tvCqi = (TextView)v.findViewById(R.id.cqi);
     }
     
     public void setTitleValue(){
@@ -331,6 +349,10 @@ public class CellFragment extends Fragment {
 		tvAltitude.setText(titleAltitude + ": " + net.getAltitude());
 		tvLat.setText(titleLatitude + ": " + latitude);
 		tvLong.setText(titleLongitude + ": " + longitude);
+		tvType.setText(titleType +": " + net.getType());
+		tvRsrp.setText("Rsrp:" + rsrp);
+		tvRsrq.setText("Rsrq:" + rsrq);
+		tvCqi.setText("CQI:" + cqi);
 
     }
     
@@ -350,11 +372,45 @@ public class CellFragment extends Fragment {
 	// 3G/4G
 	public String getMobileNetwork(){
 		String mobileNetwork = "";
-		ConnectivityManager connMgr = (ConnectivityManager)
-			    activity.getSystemService(Context.CONNECTIVITY_SERVICE);
-		NetworkInfo mobile = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
-		if (mobile.getState() == NetworkInfo.State.CONNECTED){
-			mobileNetwork = "3G connection";
+//		ConnectivityManager connMgr = (ConnectivityManager)
+//			    activity.getSystemService(Context.CONNECTIVITY_SERVICE);
+//		NetworkInfo mobile = connMgr.getNetworkInfo(ConnectivityManager.TYPE_MOBILE);
+//		if (mobile.getState() == NetworkInfo.State.CONNECTED){
+//			mobileNetwork = "3G connection";
+//		}
+		TelephonyManager telephonyManager = (TelephonyManager)activity.getSystemService(Context.TELEPHONY_SERVICE);
+		int networkType = telephonyManager.getNetworkType();
+		switch(networkType){
+			case TelephonyManager.NETWORK_TYPE_1xRTT:
+				mobileNetwork="1xRTT";
+				break;
+			case TelephonyManager.NETWORK_TYPE_CDMA:
+				mobileNetwork = "CDMA";
+				break;
+			case TelephonyManager.NETWORK_TYPE_EDGE:
+				mobileNetwork = "EDGE";
+				break;
+			case TelephonyManager.NETWORK_TYPE_EHRPD:
+				mobileNetwork = "EHRPD";
+				break;
+			case TelephonyManager.NETWORK_TYPE_GPRS:
+				mobileNetwork = "GPRS";
+				break;
+			case TelephonyManager.NETWORK_TYPE_HSDPA:
+				mobileNetwork = "HSDPA";
+				break;
+			case TelephonyManager.NETWORK_TYPE_HSPA:
+				mobileNetwork = "HSPA";
+				break;
+			case TelephonyManager.NETWORK_TYPE_HSPAP:
+				mobileNetwork = "HSPAP";
+				break;
+			case TelephonyManager.NETWORK_TYPE_LTE:
+				mobileNetwork = "LTE";
+				break;
+			case TelephonyManager.NETWORK_TYPE_UNKNOWN:
+				mobileNetwork="Unknown";
+				break;
 		}
 		return mobileNetwork;
 	}

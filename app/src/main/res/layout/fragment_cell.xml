@@ -78,30 +78,56 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
 
+        <TextView
+            android:id="@+id/rscp"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/rscp" />
+
+        <TextView
+            android:id="@+id/snr"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/snr" />
+
+        <TextView
+            android:id="@+id/ecno"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/ecno" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" >
             <TextView
-                android:id="@+id/rscp"
+                android:id="@+id/rsrp"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/rscp" />
 
             <TextView
-                android:id="@+id/snr"
+                android:id="@+id/rsrq"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/snr" />
 
             <TextView
-                android:id="@+id/ecno"
+                android:id="@+id/cqi"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="@string/ecno" />
         </LinearLayout>
+
     </LinearLayout>
 
     <LinearLayout
@@ -128,6 +154,8 @@
                 android:layout_weight="1"
                 android:text="@string/latitude" />
         </LinearLayout>
+
+
 
         <LinearLayout
             android:layout_width="match_parent"

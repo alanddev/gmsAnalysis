@@ -4,6 +4,8 @@ import android.content.Context;
 import android.telephony.PhoneStateListener;
 import android.telephony.SignalStrength;
 
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 
 
 public abstract class NwPhoneStateListener extends PhoneStateListener {
@@ -11,6 +13,12 @@ public abstract class NwPhoneStateListener extends PhoneStateListener {
 	private int dBmReturn;
 	private int ecReturn;
 	private int snrReturn;
+	private int lteRsrp; //reference LTE signal receiver power
+	private int lteRsrq; // reference LTE signal receiver Quality
+	private int lteRssnr; // reference LTE RSSNR
+	private int lteCqi; // channel quality indication
+	private int lteSignalStrength;
+
 	public static String LOG_TAG = "CustomPhoneStateListener";
 
 	public NwPhoneStateListener(Context context) {
@@ -46,6 +54,32 @@ public abstract class NwPhoneStateListener extends PhoneStateListener {
 			ecReturn = signalStrength.getEvdoEcio();
 			snrReturn = signalStrength.getEvdoSnr();
 		}
+
+		try{
+			Method[] methods = android.telephony.SignalStrength.class.getMethods();
+			for (Method mthd:methods){
+				if (mthd.getName().equals("getLteSignalStreng")) {
+					lteSignalStrength = (int)mthd.invoke(signalStrength);
+				}else if(mthd.getName().equals("getLteRsrp")) {
+					lteRsrp = (int)mthd.invoke(signalStrength);
+				}else if(mthd.getName().equals("getLteRsrq")) {
+					lteRsrq = (int)mthd.invoke(signalStrength);
+				}else if (mthd.getName().equals("getLteRssnr")) {
+					lteRssnr = (int)mthd.invoke(signalStrength);
+				}else if (mthd.getName().equals("getLteCqi")){
+					lteCqi = (int)mthd.invoke(signalStrength);
+				}
+			}
+		} catch(SecurityException e){
+			e.printStackTrace();
+		} catch(IllegalAccessException e){
+			e.printStackTrace();
+		} catch(IllegalArgumentException e){
+			e.printStackTrace();
+		} catch (InvocationTargetException e){
+			e.printStackTrace();
+		}
+
 		
 		
 		
@@ -66,5 +100,25 @@ public abstract class NwPhoneStateListener extends PhoneStateListener {
 	public double getSNR(){
 		return snrReturn;
 	}
-	
+
+
+	public int getLteCqi() {
+		return lteCqi;
+	}
+
+	public int getLteRssnr() {
+		return lteRssnr;
+	}
+
+	public int getLteRsrq() {
+		return lteRsrq;
+	}
+
+	public int getLteRsrp() {
+		return lteRsrp;
+	}
+
+	public int getLteSignalStrength() {
+		return lteSignalStrength;
+	}
 }

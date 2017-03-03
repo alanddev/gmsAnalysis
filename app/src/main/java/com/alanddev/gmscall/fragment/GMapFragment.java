@@ -72,6 +72,11 @@ public class GMapFragment extends Fragment {
         // new version must check permission :)
         try {
             Location currentLocation = locationManager.getLastKnownLocation(LocationManager.NETWORK_PROVIDER);
+            if (currentLocation == null){
+                currentLocation = new Location("");
+                currentLocation.setLatitude(21.0345);
+                currentLocation.setLongitude(105.827);
+            }
             longitude = currentLocation.getLongitude();
             latitude = currentLocation.getLatitude();
 
