@@ -264,6 +264,9 @@ public class TransactionFragment extends Fragment {
                            cell.setPci(Integer.valueOf(net.getMcc()));
                            cell.setRsrp(rsrp);
                            cell.setRsrq(rsrq);
+                           if(cells.size()>4){
+                               cells.remove(0);
+                           }
                            cells.add(cell);
                            adapter.notifyDataSetChanged();
 
