@@ -84,9 +84,9 @@ public class CellAdapter extends BaseAdapter {
         viewHolder.txtband.setText(String.valueOf(cell.getBand()));
         viewHolder.txtearfcn.setText(String.valueOf(cell.getEarfcn()));
         viewHolder.txtpci.setText(String.valueOf(cell.getPci()));
-        int rsrp = -(int)cell.getRsrp();
+        int rsrp = Math.abs((int)cell.getRsrp());
         viewHolder.prorsrp.setProgress(rsrp);
-        int rsrq = -(int)cell.getRsrq();
+        int rsrq =  Math.abs((int)cell.getRsrq());
         viewHolder.prorsrq.setProgress(rsrq);
         viewHolder.txtrsrp.setText(String.valueOf(cell.getRsrp()));
         viewHolder.txtrsrq.setText(String.valueOf(cell.getRsrq()));
