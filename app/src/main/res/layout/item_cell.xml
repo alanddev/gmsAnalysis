@@ -10,9 +10,9 @@
             android:layout_width="30dp"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
-            android:textSize="12sp"
+            android:layout_marginLeft="-1dp"
+            android:layout_marginRight="0dp"
+            android:textSize="14sp"
             android:textColor="#C1C1C1"/>
 
         <TextView
@@ -20,10 +20,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_marginLeft="5dp"
+            android:layout_marginLeft="0dp"
             android:layout_marginRight="5dp"
             android:text="Band"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textColor="#C1C1C1"/>
 
         <TextView
@@ -31,10 +31,10 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginLeft="8dp"
+            android:layout_marginRight="10dp"
             android:text="EARFCN"
-            android:textSize="12sp"
+            android:textSize="14sp"
 
             android:textColor="#C1C1C1"/>
 
@@ -43,24 +43,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:gravity="center_horizontal"
-            android:layout_marginLeft="5dp"
-            android:layout_marginRight="5dp"
+            android:layout_marginLeft="12dp"
+            android:layout_marginRight="10dp"
             android:text="PCI"
-            android:textSize="12sp"
+            android:textSize="14sp"
             android:textColor="#C1C1C1"/>
 
     <RelativeLayout
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
-        android:layout_marginLeft="5dp"
+        android:layout_marginLeft="10dp"
         android:layout_marginRight="5dp">
         <ProgressBar
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:id="@+id/rsrp_value"
             android:progress="75"
             android:max="100"
-            android:layout_height="15dp"
-            android:layout_width="80dp"
+            android:layout_height="16dp"
+            android:layout_width="90dp"
             android:progressDrawable="@drawable/progess_drawable_rsrp"/>
 
         <TextView
@@ -73,6 +73,7 @@
             android:layout_alignTop="@+id/rsrp_value"
             android:layout_alignBottom="@+id/rsrp_value"
             android:text="-75.7"
+            android:textSize="12sp"
             android:textColor="@color/colorWhite"/>
         </RelativeLayout>
 
@@ -86,8 +87,8 @@
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:id="@+id/rsrq_value"
             android:max="10"
-            android:layout_height="15dp"
-            android:layout_width="80dp"
+            android:layout_height="16dp"
+            android:layout_width="90dp"
             android:progressDrawable="@drawable/progess_drawable_sinr"/>
 
         <TextView
@@ -100,6 +101,7 @@
             android:layout_alignTop="@+id/rsrq_value"
             android:layout_alignBottom="@+id/rsrq_value"
             android:text="6.8"
+            android:textSize="12sp"
             android:textColor="@color/colorWhite"/>
     </RelativeLayout>
 

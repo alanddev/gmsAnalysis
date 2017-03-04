@@ -133,14 +133,30 @@ public class TransactionFragment extends Fragment {
                              Bundle savedInstanceState) {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         ListView lstcell = (ListView) rootView.findViewById(R.id.lstcell);
+        List<Cell> cells = new ArrayList<Cell>();
         Cell cell = new Cell();
         cell.setBand(3);
         cell.setEarfcn(1503);
         cell.setPci(499);
         cell.setRsrp(Float.valueOf("75.7"));
         cell.setRsrq(Float.valueOf("6.8"));
-        List<Cell> cells = new ArrayList<Cell>();
         cells.add(cell);
+        cell = new Cell();
+        cell.setBand(4);
+        cell.setEarfcn(1570);
+        cell.setPci(209);
+        cell.setRsrp(Float.valueOf("60.7"));
+        cell.setRsrq(Float.valueOf("5.8"));
+        cells.add(cell);
+
+        cell = new Cell();
+        cell.setBand(3);
+        cell.setEarfcn(1270);
+        cell.setPci(109);
+        cell.setRsrp(Float.valueOf("80.7"));
+        cell.setRsrq(Float.valueOf("7.8"));
+        cells.add(cell);
+
         CellAdapter adapter = new CellAdapter(getActivity().getApplicationContext(),cells);
         lstcell.setAdapter(adapter);
         //textView.setText(getString(R.string.section_format, getArguments().getInt(ARG_SECTION_NUMBER)));
