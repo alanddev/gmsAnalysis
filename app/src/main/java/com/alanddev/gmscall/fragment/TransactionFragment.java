@@ -459,8 +459,8 @@ public class TransactionFragment extends Fragment {
         tvRSCP.setText(dBm + " dBm");
         int idBm = Math.abs((int)dBm);
 
-        proRSCP.setProgress(idBm);
-        proRSCP.setMax(120);
+        proRSCP.setProgress(idBm-50);
+        //proRSCP.setMax(120);
         tvSNR.setText(SNR + " dBm");
         proSINR.setProgress((int)SNR);
         tvMCC.setText(String.valueOf(net.getMcc()));

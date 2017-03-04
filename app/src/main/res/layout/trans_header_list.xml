@@ -130,7 +130,7 @@
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:id="@+id/rsrp_value"
             android:progress="75"
-            android:max="85"
+            android:max="50"
             android:layout_height="18dp"
             android:layout_width="100dp"
             android:progressDrawable="@drawable/progess_drawable_rsrp"/>
