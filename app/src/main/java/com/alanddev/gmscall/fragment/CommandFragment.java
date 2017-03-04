@@ -40,8 +40,8 @@ public class CommandFragment extends Fragment {
         ListView listCmd = (ListView)v.findViewById(R.id.list_command);
         Command cmdFirst = new Command(0,"Loop","N/A","N/A","N/A","4","N/A","N/A","N/A","2/4","star");
         Command cmdSecond = new Command(1,"SDownload","http://download.zing.vcdn.vn/","20","1","10","10","-","-","Finish","add1");
-        Command cmdThird = new Command(2,"Upload","113.164.7.27","20","1","10","10","dktu1","dktu#1","2/5","save");
-        Command cmdFourth = new Command(3,"End_Loop","N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","replay");
+        Command cmdThird = new Command(2,"Upload","113.164.7.27","20","1","10","10","dktu1","dktu#1","2/5","ic_save");
+        Command cmdFourth = new Command(3,"End_Loop","N/A","N/A","N/A","N/A","N/A","N/A","N/A","N/A","ic_replay");
         ArrayList<Command> listCommand = new ArrayList<Command>();
         listCommand.add(cmdFirst);
         listCommand.add(cmdSecond);
