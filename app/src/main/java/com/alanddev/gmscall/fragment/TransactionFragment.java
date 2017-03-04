@@ -457,7 +457,7 @@ public class TransactionFragment extends Fragment {
 
     public void setTitleValue(){
         tvRSCP.setText(dBm + " dBm");
-        int idBm = - (int)dBm;
+        int idBm = (int)dBm;
         proRSCP.setProgress(idBm);
         proRSCP.setMax(120);
         tvSNR.setText(SNR + " dBm");

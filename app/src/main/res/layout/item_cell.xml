@@ -57,7 +57,7 @@
         <ProgressBar
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:id="@+id/rsrp_value"
-            android:max="100"
+            android:max="130"
             android:layout_height="16dp"
             android:layout_width="90dp"
             android:progressDrawable="@drawable/progess_drawable_rsrp"/>
@@ -85,7 +85,7 @@
         <ProgressBar
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:id="@+id/rsrq_value"
-            android:max="10"
+            android:max="20"
             android:layout_height="16dp"
             android:layout_width="90dp"
             android:progressDrawable="@drawable/progess_drawable_sinr"/>
