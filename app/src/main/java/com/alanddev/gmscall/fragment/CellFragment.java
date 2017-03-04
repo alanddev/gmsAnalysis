@@ -257,7 +257,7 @@ public class CellFragment extends Fragment {
         			net.setTime(time);
 					//NwConst.sharedListNetwork.add(net);
         			//addRow(nRow++,net);
-        			setTitleValue();   			
+        			setTitleValue();
                     //datasource.createNetwork(net);  
         			
         		}
@@ -265,8 +265,8 @@ public class CellFragment extends Fragment {
             }
     	},
 		PhoneStateListener.LISTEN_SIGNAL_STRENGTHS);
-        NetworkController dataSource = NwConst.getInstance().sharedDataSource;
-        ArrayList<Network> netList = (ArrayList<Network>) dataSource.getAllNetworks();
+        //NetworkController dataSource = NwConst.getInstance().sharedDataSource;
+        //ArrayList<Network> netList = (ArrayList<Network>) dataSource.getAllNetworks();
         
         return v;
     }
@@ -452,6 +452,8 @@ public class CellFragment extends Fragment {
 //		datasource.close();
 		super.onDestroyView();
 	}
+
+
 	
 }
 

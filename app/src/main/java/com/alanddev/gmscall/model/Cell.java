@@ -5,17 +5,17 @@ package com.alanddev.gmscall.model;
  */
 
 public class Cell {
-    private int band;
+    private String band;
     private int earfcn;
     private int pci;
     private float rsrp;
     private float rsrq;
 
-    public int getBand() {
+    public String getBand() {
         return band;
     }
 
-    public void setBand(int band) {
+    public void setBand(String band) {
         this.band = band;
     }
 

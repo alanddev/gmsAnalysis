@@ -70,34 +70,24 @@ public class CellAdapter extends BaseAdapter {
                     .findViewById(R.id.rsrp_value));
             viewHolder.prorsrq = ((ProgressBar) convertView
                     .findViewById(R.id.rsrq_value));
+            viewHolder.txtrsrp = ((TextView) convertView
+                    .findViewById(R.id.rsrp_progress_title));
+            viewHolder.txtrsrq = ((TextView) convertView
+                    .findViewById(R.id.rsrq_progress_title));
 
             convertView.setTag(viewHolder);
         } else {
             viewHolder = (Viewholder) convertView.getTag();
         }
 
-        if(viewHolder.txtband==null){
-            Log.d("TAG", "getView: ");
-        }
         viewHolder.txtnoname.setText("s");
         viewHolder.txtband.setText(String.valueOf(cell.getBand()));
         viewHolder.txtearfcn.setText(String.valueOf(cell.getEarfcn()));
         viewHolder.txtpci.setText(String.valueOf(cell.getPci()));
         viewHolder.prorsrp.setProgress(Math.round(cell.getRsrp()));
         viewHolder.prorsrq.setProgress(Math.round(cell.getRsrq()));
-        /*if(progress<25){
-            viewHolder.progressBar.setProgressDrawable(mContext.getResources().getDrawable(R.drawable.progess_drawable_25));
-        }else if(progress<50){
-            viewHolder.progressBar.setProgressDrawable(mContext.getResources().getDrawable(R.drawable.progess_drawable_50));
-        }else if(progress<70){
-            viewHolder.progressBar.setProgressDrawable(mContext.getResources().getDrawable(R.drawable.progess_drawable_70));
-        }else if(progress<90){
-            viewHolder.progressBar.setProgressDrawable(mContext.getResources().getDrawable(R.drawable.progess_drawable_90));
-        }else{
-            viewHolder.progressBar.setProgressDrawable(mContext.getResources().getDrawable(R.drawable.progess_drawable_100));
-        }
-        viewHolder.progressBar.setProgress(progress);*/
-        //viewHolder.progressBar.setProgress((int)(budget.getRealamt()/budget.getAmount())*100);
+        viewHolder.txtrsrp.setText(String.valueOf(cell.getRsrp()));
+        viewHolder.txtrsrq.setText(String.valueOf(cell.getRsrq()));
         return convertView;
     }
 
@@ -108,8 +98,14 @@ public class CellAdapter extends BaseAdapter {
         public TextView txtpci;
         public ProgressBar prorsrp;
         public ProgressBar prorsrq;
+        public TextView txtrsrp;
+        public TextView txtrsrq;
 
         Viewholder() {
         }
+    }
+
+    public void setData(List<Cell> cells){
+        this.cells=cells;
     }
 }

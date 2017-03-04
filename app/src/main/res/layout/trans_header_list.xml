@@ -26,7 +26,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginLeft="5dp"
-                android:text="EARFCN"
+                android:text="MCC"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorTextColor"/>
@@ -44,7 +44,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
                 android:layout_marginLeft="5dp"
-                android:text="PLML"
+                android:text="LAC"
                 android:textStyle="bold"
                 android:textSize="14sp"
                 android:textColor="@color/colorTextColor"/>
@@ -72,7 +72,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
 
-                android:text="PCI"
+                android:text="MNC"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorTextColor"/>
@@ -90,7 +90,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
 
-                android:text="Band"
+                android:text="RNC"
                 android:textStyle="bold"
                 android:textSize="14sp"
                 android:textColor="@color/colorTextColor"/>
@@ -116,7 +116,7 @@
         android:layout_width="wrap_content"
         android:layout_height="20dp"
         android:layout_marginLeft="0dp"
-        android:text="RSRP"
+        android:text="RSCP"
         android:textSize="14sp"
         android:textStyle="bold"
         android:textColor="@color/colorTextColor"/>
@@ -130,7 +130,7 @@
             style="@android:style/Widget.ProgressBar.Horizontal"
             android:id="@+id/rsrp_value"
             android:progress="75"
-            android:max="100"
+            android:max="85"
             android:layout_height="18dp"
             android:layout_width="100dp"
             android:progressDrawable="@drawable/progess_drawable_rsrp"/>
@@ -213,8 +213,7 @@
                 android:id="@+id/ecellid_title"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-
-                android:text="ECellID"
+                android:text="CELLID"
                 android:textSize="14sp"
                 android:textStyle="bold"
                 android:textColor="@color/colorTextColor"/>
@@ -222,7 +221,6 @@
                 android:id="@+id/ecellid_value"
                 android:layout_width="wrap_content"
                 android:layout_height="20dp"
-
                 android:text="16010"
                 android:textSize="12sp"
                 android:textColor="@color/colorWhite"/>
