@@ -1,9 +1,18 @@
 package com.alanddev.gmscall.ui;
 
+import android.content.BroadcastReceiver;
+import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.net.wifi.WpsInfo;
+import android.net.wifi.p2p.WifiP2pConfig;
+import android.net.wifi.p2p.WifiP2pDevice;
+import android.net.wifi.p2p.WifiP2pManager;
 import android.os.Bundle;
+import android.os.Environment;
+import android.provider.Settings;
 import android.support.design.widget.NavigationView;
 import android.support.design.widget.TabLayout;
 import android.support.v4.view.GravityCompat;
@@ -12,12 +21,15 @@ import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.alanddev.gmscall.R;
 import com.alanddev.gmscall.adapter.CellAdapter;
@@ -26,14 +38,28 @@ import com.alanddev.gmscall.controller.*;
 import com.alanddev.gmscall.fragment.CallFragment;
 import com.alanddev.gmscall.fragment.CellFragment;
 import com.alanddev.gmscall.fragment.CommandFragment;
+import com.alanddev.gmscall.fragment.DeviceDetailFragment;
+import com.alanddev.gmscall.fragment.DeviceListFragment;
 import com.alanddev.gmscall.fragment.GMapFragment;
 import com.alanddev.gmscall.fragment.TransactionFragment;
+import com.alanddev.gmscall.fragment.WifiDirectFragment;
 import com.alanddev.gmscall.helper.*;
 import com.alanddev.gmscall.model.Cell;
 import com.alanddev.gmscall.util.*;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Date;
 
 public class MainActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -49,6 +75,11 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private NavigationView navigationView;
     private TabLayout tabLayout;
     ImageView imageView;
+
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +110,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mSectionsPagerAdapter = new TransSectionPagerAdapter(getSupportFragmentManager());
         mSectionsPagerAdapter.addFrag(TransactionFragment.newInstance(mSectionsPagerAdapter.getCount() + 1),"CELL");
         mSectionsPagerAdapter.addFrag(new CommandFragment(),"COMMAND");
-        mSectionsPagerAdapter.addFrag(new CellFragment(),"INFO");
+        mSectionsPagerAdapter.addFrag(new WifiDirectFragment(),"WIFI");
         mSectionsPagerAdapter.addFrag(new CallFragment(),"CALL");
         mSectionsPagerAdapter.addFrag(new GMapFragment(), "MAP");
         mViewPager = (ViewPager) findViewById(R.id.container);
@@ -96,6 +127,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
 
 
 
+
     }
 
     @Override
@@ -105,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    @Override
+    /*@Override
     public boolean onOptionsItemSelected(MenuItem item) {
         // Handle action bar item clicks here. The action bar will
         // automatically handle clicks on the Home/Up button, so long
@@ -118,7 +150,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         }
 
         return super.onOptionsItemSelected(item);
-    }
+    }*/
 
 
 //    Thread background = new Thread() {
@@ -248,4 +280,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
             }
         } );*/
     }
+
+
 }
