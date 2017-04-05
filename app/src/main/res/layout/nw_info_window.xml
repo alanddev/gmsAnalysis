@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_below="@+id/snippet"
-        android:text="@string/birthday"
+        android:text="@string/accept"
         />
 
     <TextView

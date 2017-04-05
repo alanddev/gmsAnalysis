@@ -50,10 +50,11 @@ public class CommandAdapter extends ArrayAdapter<Command> {
 
         ImageView imgIcon = (ImageView)convertView.findViewById(R.id.icon);
         // Populate the data into the template view using the data object
-        tvCmd.setText(command.getId()+":"+command.getCmd());
-        tvServer.setText("server:" + command.getServer());
-        tvElapsedTime.setText("Time:"+command.getTimeTest());
-        tvStream.setText("Stream:" + command.getStream());
+        // ID, Server, Cmd, time, stream, numberrun,timeNext,user,pass, status
+        tvCmd.setText(command.getCmd());
+        tvServer.setText(command.getServer());
+        tvElapsedTime.setText(command.getTimeTest());
+        tvStream.setText(command.getStream());
         tvNumberRun.setText(command.getNumber());
         tvtimeNext.setText(command.getTimeToNext());
         tvUser.setText(command.getUser());
