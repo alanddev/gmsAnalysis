@@ -34,7 +34,7 @@ public class NwUtils {
 		
 		String operatorName = tel.getNetworkOperatorName();
 		networkReturn.setOperator(operatorName);
-		if (networkOperator != null) {
+		if (networkOperator != null && networkOperator.length() >=3) {
 			networkReturn.setMcc(networkOperator.substring(0, 3));
 			networkReturn.setMnc(networkOperator.substring(3));        
 		}

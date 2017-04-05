@@ -8,7 +8,8 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
 
     public static final String TABLE_CALL_ENTRY = "call_entries";
     public static final String TABLE_CUR = "currency";
-
+    public static final String TABLE_COMMAND = "command";
+    public static final String TABLE_NETWORK = "networks";
 
     // table Call Entry
     public static final String COLUMN_CALL_ENTRY_ID = "id";
@@ -28,7 +29,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_CUR_SYMBOL = "symbol";
     public static final String COLUMN_CUR_DISPLAY = "display";
 
-    public static final String TABLE_NETWORK = "networks";
+
     //public static final String COLUMN_ID = "_id";
     public static final String COLUMN_LONGITUDE = "longitude";
     public static final String COLUMN_LATITUDE = "latitude";
@@ -49,6 +50,19 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
     public static final String COLUMN_NWACCURACY = "nwAccuracy";
     public static final String COLUMN_DATA = "data";
     public static final String COLUMN_SPEED = "speed";
+
+
+    public static final String COLUMN_COMMAND_ID ="id";
+    public static final String COLUMN_COMMAND_SERVER ="server";
+    public static final String COLUMN_COMMAND_CMD ="cmd";
+    public static final String COLUMN_COMMAND_TIME ="time";
+    public static final String COLUMN_COMMAND_STREAM ="stream";
+    public static final String COLUMN_COMMAND_NUMBER_RUN="number_run";
+    public static final String COLUMN_COMMAND_TIME_NEXT ="time_next";
+    public static final String COLUMN_COMMAND_USER ="user";
+    public static final String COLUMN_COMMAND_PASS ="pass";
+    public static final String COLUMN_COMMAND_STATUS ="status";
+
 
     // 20 fields
     // Database creation sql statement
@@ -105,6 +119,21 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
             + ");";
 
 
+    private static final String TABLE_COMMAND_CREATE = "CREATE TABLE "
+            + TABLE_COMMAND + "("
+            + COLUMN_COMMAND_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+            + COLUMN_COMMAND_SERVER + " text not null, "
+            + COLUMN_COMMAND_CMD + " text not null, "
+            + COLUMN_COMMAND_TIME + " text not null, "
+            + COLUMN_COMMAND_STREAM + " text not null, "
+            + COLUMN_COMMAND_NUMBER_RUN + " text not null, "
+            + COLUMN_COMMAND_TIME_NEXT + " text not null, "
+            + COLUMN_COMMAND_USER + " text not null, "
+            + COLUMN_COMMAND_PASS + " text not null, "
+            + COLUMN_COMMAND_STATUS + " text not null "
+            + ");";
+
+
     public MwSQLiteHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
@@ -115,6 +144,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
         database.execSQL(CALL_ENTRY_CREATE);
         database.execSQL(CUR_CREATE);
         database.execSQL(TABLE_NETWORK_CREATE);
+        database.execSQL(TABLE_COMMAND_CREATE);
     }
 
 
@@ -127,6 +157,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_NETWORK);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CALL_ENTRY);
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_CUR);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_COMMAND);
         onCreate(db);
     }
 
