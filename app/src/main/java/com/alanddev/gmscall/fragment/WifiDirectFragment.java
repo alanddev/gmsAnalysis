@@ -242,7 +242,7 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
 
         else{
             //SystemClock.sleep(10000);
-            Log.d("Ket noi","Thiet bi dang trong trang thai ket noi");
+            //Log.d("Ket noi","Thiet bi dang trong trang thai ket noi");
             //ghilog("Thiet Bi Dang trong trang thai ket noi->Do Nothing", file_log_ok); // Bat dau Scan -> Ghi log
         }
 
