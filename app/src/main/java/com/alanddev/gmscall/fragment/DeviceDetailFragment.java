@@ -182,6 +182,7 @@ public class DeviceDetailFragment extends Fragment implements ConnectionInfoList
     public void showDetails(WifiP2pDevice device) {
         this.device = device;
         this.getView().setVisibility(View.VISIBLE);
+        Log.d("DETAIL",device.deviceAddress);
         TextView view = (TextView) mContentView.findViewById(R.id.device_address);
         view.setText(device.deviceAddress);
         view = (TextView) mContentView.findViewById(R.id.device_info);

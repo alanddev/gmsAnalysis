@@ -29,11 +29,15 @@ import com.alanddev.gmscall.R;
 import com.alanddev.gmscall.ui.MainActivity;
 import com.alanddev.gmscall.ui.WiFiDirectBroadcastReceiver;
 
+import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.OutputStreamWriter;
 import java.io.PrintWriter;
 import java.text.DateFormat;
@@ -107,7 +111,6 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
                             }
                             catch (Exception e ){
                                 e.printStackTrace();
-                                Log.d("AAAAAA ",e.getMessage());
                             }
                             try{
                                 Thread.sleep(30000);
@@ -144,10 +147,10 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
     public void scanDeviceA()
     {
         //ghilog("Bat Dau Scan", file_log_ok); // Bat dau Scan -> Ghi log
-        Log.d("BBBBB ","START");
+
         final DeviceListFragment fragment = (DeviceListFragment) getChildFragmentManager()
                 .findFragmentById(R.id.frag_list);
-        Log.d("BBBBB ","END");
+
 
         if (fragment.getDevice().status != WifiP2pDevice.CONNECTED)
         {
@@ -158,25 +161,25 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
                 {
                     long t1 = System.currentTimeMillis();
                     boolean scan = true, timkiem = false;
-                    while (t1 <System.currentTimeMillis()+10000  &&  scan)
-                    {
-                        try
-                        {
+                    while (t1 <System.currentTimeMillis()+10000  &&  scan) {
+                        try{
                             String xxx = Arrays.toString(DeviceListFragment.peers.toArray());
                             timkiem = true;
-                            if (xxx.contains("Phone1"))
+                            Log.d("DEVICE",t1+" "+xxx);
+                            //if (xxx.contains("Phone1"))
                             //if (xxx.contains("MayJ5A"))
-                            {
+                            //{
                                 //System.out.println(xxx);
                                 String []results_array = xxx.split("\n");
                                 int check_result = 0;
                                 for (int i=0;i< results_array.length; i++)
                                 {
-                                    if(results_array[i].indexOf("Phone1") != -1 && check_result==0)
+                                    if(results_array[i].indexOf("Device") != -1 && check_result==0)
                                     //if(results_array[i].indexOf("MayJ5A") != -1 && check_result==0)
                                     {
                                         name = results_array[i];
                                         check_result = 1;
+                                        scan = false;
                                     }
                                     if(results_array[i].indexOf("deviceAddress") != -1 && check_result==1)
                                     {
@@ -189,9 +192,11 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
                                         check_result = 3;
                                     }
                                 }
-                                Thread.sleep(1000);
-                                scan = false;
-                            }
+                                //Thread.sleep(1000);
+
+                           // }
+                            //t1=t1+100;
+                            Thread.sleep(5000);
                         }
                         catch (Exception e)
                         {
@@ -202,7 +207,7 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
                     {
                         String []results_address = address.split(" ");
                         String []results_status = status.split(" ");
-                        System.out.println(name + "---" + results_address[2] + "---" + results_status[2]);
+                        Log.d("Tim kiem",name + "---" + results_address[2] + "---" + results_status[2]);
                         if(results_status[2].equals("3"))
                         {
                             connectpeer(results_address[2]);
@@ -215,11 +220,11 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
 
                 @Override
                 public void onSuccess() {
-                    Toast.makeText(getActivity(), "Discovery Initiated",
+                    Toast.makeText(getActivity(), "Discovery Initiated ",
                             Toast.LENGTH_SHORT).show();
                     time_scan = System.currentTimeMillis();
                     number_scan++;
-                    //log_wifi("Lan scan thanh cong : ", " tai thoi diem : ", number_scan, time_scan);
+                    Log.d("Lan scan thanh cong : "+ number_scan, " tai thoi diem : "+  time_scan +" ");
                     //ghilog("Discovery Initiated", file_log_ok); // Bat dau Scan -> Ghi log
                 }
 
@@ -235,14 +240,18 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
             });
         }
 
-        else
-        {
+        else{
             //SystemClock.sleep(10000);
-            System.out.println("Thiet bi dang trong trang thai ket noi");
-            ghilog("Thiet Bi Dang trong trang thai ket noi->Do Nothing", file_log_ok); // Bat dau Scan -> Ghi log
+            Log.d("Ket noi","Thiet bi dang trong trang thai ket noi");
+            //ghilog("Thiet Bi Dang trong trang thai ket noi->Do Nothing", file_log_ok); // Bat dau Scan -> Ghi log
         }
 
     }
+
+
+
+
+
     public void scanDeviceB()
     {
         final DeviceListFragment fragment = (DeviceListFragment) getChildFragmentManager()
@@ -270,6 +279,52 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
             System.out.println("Thiet bi dang trong trang thai ket noi");
         }
 
+    }
+
+
+    public void re_connect_master(String ip_slave)
+    {
+        String[] command2 = {"su","-c","adb connect "+ip_slave};
+        String [] clear_key  = {"su","-c","HOME=/data;rm /data/.android/*; cp /sdcard/.android/* /data/.android/;"};
+        String [] cmd1  = {"su","-c","adb kill-server;HOME=/data/; adb start-server"};
+        try{
+            ProcessBuilder clear_k = new ProcessBuilder( clear_key);
+            Process clear_p = clear_k.start();
+            clear_p.waitFor();
+            ProcessBuilder probuilder1 = new ProcessBuilder(cmd1);
+            Process p1 = probuilder1.start();p1.waitFor();
+            ProcessBuilder probuilder = new ProcessBuilder(command2);
+            Process p = probuilder.start();
+            InputStream in = p.getInputStream();
+            OutputStream out = p.getOutputStream();
+            InputStream err = p.getErrorStream();
+            BufferedReader br= new BufferedReader(new InputStreamReader(in));
+            String line;
+            String kq="";
+            while((line = br.readLine()) != null){
+                System.out.println(line);
+                kq=kq+line+"\n";
+            }
+            Toast.makeText(getActivity(),kq,Toast.LENGTH_LONG).show();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            e.printStackTrace();
+        }
+    }
+
+
+    public void re_connect_slave()
+    {
+        String [] cmd1  = {"su","-c","HOME=/data/;setprop service.adb.tcp.port 5555;stop adbd;start adbd"};
+        try{
+            ProcessBuilder probuilder1 = new ProcessBuilder(cmd1);
+            Process p1 = probuilder1.start();
+            p1.waitFor();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
     }
 
 
@@ -333,7 +388,7 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
             @Override
             public void onSuccess() {
                 // WiFiDirectBroadcastReceiver will notify us. Ignore for now.
-                System.out.println("Gui lenh Connect thanh cong");
+                Log.d("Connect","Gui lenh Connect thanh cong");
             }
 
             @Override
@@ -344,7 +399,7 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
         });
     }
     @Override
-    public void connectpeer(String address) {
+    public void connectpeer(final String address) {
         WifiP2pConfig config = new WifiP2pConfig();
         config.deviceAddress = address;
         config.wps.setup = WpsInfo.PBC;
@@ -354,9 +409,8 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
                 // WiFiDirectBroadcastReceiver will notify us. Ignore for now.
                 time_connect = System.currentTimeMillis();
                 number_connect++;
-                System.out.println("Connect thanh cong");
-                //log_wifi("Lan connect thanh cong : ", " tai thoi diem : ", number_connect, time_connect);
-                ghilog("Send Invite Success", file_log_ok); // Bat dau Scan -> Ghi log
+                Log.d("connectpeer","Connect thanh cong");
+                re_connect_master(address);
             }
 
             @Override
