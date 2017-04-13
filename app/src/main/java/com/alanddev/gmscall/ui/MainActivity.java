@@ -111,7 +111,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mSectionsPagerAdapter.addFrag(TransactionFragment.newInstance(mSectionsPagerAdapter.getCount() + 1),"CELL");
         mSectionsPagerAdapter.addFrag(new CommandFragment(),"COMMAND");
         mSectionsPagerAdapter.addFrag(new WifiDirectFragment(),"WIFI");
-        mSectionsPagerAdapter.addFrag(new CallFragment(),"CALL");
+        //mSectionsPagerAdapter.addFrag(new CallFragment(),"CALL");
         mSectionsPagerAdapter.addFrag(new GMapFragment(), "MAP");
         mViewPager = (ViewPager) findViewById(R.id.container);
 

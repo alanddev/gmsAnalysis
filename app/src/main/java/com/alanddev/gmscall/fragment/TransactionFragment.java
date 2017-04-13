@@ -261,7 +261,9 @@ public class TransactionFragment extends Fragment {
                            Cell cell = new Cell();
                            cell.setBand(net.getMnc());
                            cell.setEarfcn(Integer.valueOf(net.getLac()));
-                           cell.setPci(Integer.valueOf(net.getMcc()));
+                           if ( net.getMcc()!=null) {
+                               cell.setPci(Integer.valueOf(net.getMcc()));
+                           }
                            cell.setRsrp(rsrp);
                            cell.setRsrq(rsrq);
                            if(cells.size()>4){

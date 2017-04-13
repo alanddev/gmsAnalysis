@@ -1,7 +1,7 @@
 package com.alanddev.gmscall.model;
 
 
-public class Network {
+public class Network extends Model {
 	private double myLongitude;
 	private double myLatitude;
 	private String mcc;

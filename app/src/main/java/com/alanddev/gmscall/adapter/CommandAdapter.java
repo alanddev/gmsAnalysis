@@ -48,23 +48,40 @@ public class CommandAdapter extends ArrayAdapter<Command> {
         TextView tvPass = (TextView) convertView.findViewById(R.id.pass);
         TextView tvStatus = (TextView) convertView.findViewById(R.id.status);
 
-        ImageView imgIcon = (ImageView)convertView.findViewById(R.id.icon);
+        //ImageView imgIcon = (ImageView)convertView.findViewById(R.id.icon);
         // Populate the data into the template view using the data object
         // ID, Server, Cmd, time, stream, numberrun,timeNext,user,pass, status
-        tvCmd.setText(command.getCmd());
-        tvServer.setText(command.getServer());
-        tvElapsedTime.setText(command.getTimeTest());
-        tvStream.setText(command.getStream());
-        tvNumberRun.setText(command.getNumber());
-        tvtimeNext.setText(command.getTimeToNext());
-        tvUser.setText(command.getUser());
-        tvPass.setText(command.getPass());
-        tvStatus.setText(command.getStatus());
+        tvCmd.setText(createFormatTableString(command.getCmd()));
+        tvServer.setText(createFormatTableString(command.getServer()));
+        tvElapsedTime.setText(createFormatTableString(command.getTimeTest()));
+        tvStream.setText(createFormatTableString(command.getStream()));
+        tvNumberRun.setText(createFormatTableString(command.getNumber()));
+        tvtimeNext.setText(createFormatTableString(command.getTimeToNext()));
+        tvUser.setText(createFormatTableString(command.getUser()));
+        tvPass.setText(createFormatTableString(command.getPass()));
+        tvStatus.setText(createFormatTableString(command.getStatus()));
         //int temp = position%5+1;
-        imgIcon.setImageResource(mContext.getResources().getIdentifier(command.getImg(), "mipmap", mContext.getPackageName()));
+        //imgIcon.setImageResource(mContext.getResources().getIdentifier(command.getImg(), "mipmap", mContext.getPackageName()));
 
         // Return the completed view to render on screen
         return convertView;
+    }
+
+    private String createFormatTableString(String source){
+        int length = source.length();
+        int max_length = 6 ;
+        String delimiter = "|";
+
+        if (length >= max_length){
+            source = source.substring(0,max_length) + delimiter;
+        }else{
+            int different = max_length - length;
+            for(int i = 0 ; i <different ; i++){
+                source += " ";
+            }
+            source += delimiter;
+        }
+        return source;
     }
 
 
