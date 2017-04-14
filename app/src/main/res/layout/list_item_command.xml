@@ -2,10 +2,10 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
 android:layout_width="match_parent"
 android:layout_height="match_parent"
-android:paddingTop="10dp"
-android:paddingBottom="10dp">
+android:paddingTop="8dp"
+android:paddingBottom="8dp">
 
-<ImageView
+<!--<ImageView
     android:id="@+id/icon"
     android:src="@mipmap/add1"
     android:layout_width="24dp"
@@ -13,110 +13,115 @@ android:paddingBottom="10dp">
     android:scaleType="fitXY"
     android:layout_alignParentLeft="true"
     android:layout_marginLeft="2dp"
-    />
+    />-->
 
+
+
+    <!--android:layout_toRightOf="@+id/icon"-->
     <TextView
         android:id="@+id/cmd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:textSize="@dimen/text_command_size"
         android:text="cmd"
+        android:width="@dimen/info_command_size"
+        android:maxLength="8"
         android:textColor="@android:color/black"
         android:textStyle="bold"
-
-        android:layout_alignLeft="@+id/server"
-        android:layout_alignStart="@+id/server" />
-
+        />
 
     <TextView android:id="@+id/server"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="12dp"
-        android:textSize="12dp"
+        android:textSize="@dimen/text_command_size"
+        android:maxLength="8"
+        android:width="@dimen/info_command_size"
         android:text="Server"
         android:textColor="@android:color/black"
-        android:layout_toRightOf="@+id/icon"
-        android:layout_below="@+id/stream"
+        android:layout_toRightOf="@+id/cmd"
         android:textStyle="bold"/>
 
     <TextView android:id="@+id/elapseTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:textSize="12dp"
+        android:textSize="@dimen/text_command_size"
+        android:maxLength="8"
+        android:width="@dimen/info_command_size"
         android:text="time:"
         android:textColor="@android:color/holo_blue_dark"
-        android:layout_toRightOf="@+id/cmd"
-        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/server"
         android:textStyle="bold"/>
 
     <TextView android:id="@+id/stream"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="15dp"
-        android:textSize="12dp"
+        android:textSize="@dimen/text_command_size"
+        android:width="@dimen/info_command_size"
+        android:maxLength="8"
         android:text="Stream:"
         android:textColor="@android:color/holo_blue_dark"
-        android:layout_toRightOf="@+id/cmd"
-        android:layout_below="@+id/elapseTime"
-        android:layout_marginTop="3dp"
+        android:layout_toRightOf="@+id/elapseTime"
         android:textStyle="bold"/>
+
+
 
     <TextView android:id="@+id/numberRun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:textSize="12dp"
+        android:textSize="@dimen/text_command_size"
+        android:width="@dimen/info_command_size"
+        android:maxLength="8"
         android:text="Number Run"
-        android:layout_marginTop="3dp"
         android:textColor="@android:color/holo_orange_dark"
-        android:layout_toRightOf="@+id/elapseTime"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/stream"
+         />
 
     <TextView android:id="@+id/timeNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:textSize="12dp"
+        android:textSize="@dimen/text_command_size"
+        android:width="@dimen/info_command_size"
+        android:maxLength="8"
         android:text="Time to next"
-        android:layout_marginTop="3dp"
         android:textColor="@android:color/holo_orange_dark"
-        android:layout_toRightOf="@+id/elapseTime"
-        android:layout_below="@+id/numberRun"
+        android:layout_toRightOf="@+id/numberRun"
         android:textStyle="bold"/>
 
     <TextView android:id="@+id/user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:textSize="12dp"
+        android:textSize="@dimen/text_command_size"
+        android:maxLength="8"
+        android:width="@dimen/info_command_size"
         android:text="User"
-        android:layout_marginTop="3dp"
         android:textColor="@android:color/holo_green_dark"
-        android:layout_toRightOf="@+id/numberRun"
-        android:textStyle="bold"/>
+        android:textStyle="bold"
+        android:layout_toRightOf="@+id/timeNext" />
+
 
     <TextView android:id="@+id/pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="25dp"
-        android:textSize="12dp"
+        android:textSize="@dimen/text_command_size"
+        android:width="@dimen/info_command_size"
+        android:maxLength="8"
         android:text="Pass"
-        android:layout_marginTop="3dp"
         android:textColor="@android:color/holo_green_dark"
-        android:layout_toRightOf="@+id/timeNext"
-        android:layout_below="@+id/user"
+        android:layout_toRightOf="@+id/user"
         android:textStyle="bold"/>
 
     <TextView
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="16dp"
+        android:textSize="@dimen/text_command_size"
+        android:width="@dimen/info_command_size"
+        android:maxLength="8"
         android:text="Status"
         android:textColor="@android:color/holo_red_light"
         android:textStyle="bold"
-        android:layout_alignParentRight="true"
-        android:layout_marginRight="5dp"
+        android:layout_toRightOf="@+id/pass"
     />
+
 </RelativeLayout>

@@ -1,4 +1,7 @@
+
+
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -7,35 +10,48 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin">
 
+    <android.support.design.widget.CoordinatorLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <android.support.design.widget.FloatingActionButton android:id="@+id/add_command"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_dialog_info"
+            android:layout_toLeftOf="@+id/btnLoop"
+            android:layout_toStartOf="@+id/btnLoop"
+            android:layout_gravity="bottom"
+            android:layout_marginBottom="26dp" />
+    </android.support.design.widget.CoordinatorLayout>
 
     <ImageButton
         android:src="@mipmap/ic_run"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:id="@+id/btnRun" />
 
     <ImageButton
         android:src="@mipmap/ic_stop"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="15dp"
         android:layout_toRightOf="@+id/btnRun"
         android:id="@+id/btnStop" />
     <ImageButton
         android:src="@mipmap/ic_upload"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="15dp"
         android:layout_toRightOf="@+id/btnStop"
         android:id="@+id/btnLoop" />
 
     <ImageButton
         android:src="@mipmap/ic_download"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
+        android:layout_width="30dp"
+        android:layout_height="30dp"
         android:layout_marginLeft="15dp"
         android:layout_toRightOf="@+id/btnLoop"
-        android:id="@+id/btnELoop" />
+        android:id="@+id/btnELoop"
+        android:layout_above="@+id/list_command" />
     <!--<ImageButton-->
         <!--android:src="@mipmap/ic_download"-->
         <!--android:layout_width="36dp"-->
@@ -76,9 +92,10 @@
 
     <ListView android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="5dp"
-        android:layout_below="@+id/btnRun"
         android:id="@+id/list_command"
-    />
+        android:layout_below="@+id/btnRun"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 
 </RelativeLayout>

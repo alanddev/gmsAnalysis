@@ -55,7 +55,9 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
     private WifiP2pManager.Channel channel;
     private BroadcastReceiver receiver = null;
     private Button btnScan;
+    private Button btnReceiver;
     private Thread Scan;
+    private Thread threadReceive;
     public static WifiP2pConfig config;
     public String name = "", address = "", status = "";
     public static int number_disconnect = 0, number_connect = 0, number_scan = 0, number_scan_fails = 0;
@@ -91,6 +93,7 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
         channel = manager.initialize(getActivity(), getActivity().getMainLooper(), null);
         receiver = new WiFiDirectBroadcastReceiver(manager, channel, this);
         btnScan = (Button)rootView.findViewById(R.id.buttonScan);
+        btnReceiver = (Button)rootView.findViewById(R.id.buttonReceive);
         btnScan.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -107,7 +110,6 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
                             try
                             {
                                 scanDeviceA();
-
                             }
                             catch (Exception e ){
                                 e.printStackTrace();
@@ -115,7 +117,6 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
                             try{
                                 Thread.sleep(30000);
                             }catch (Exception e){
-
                             }
 
                         }
@@ -124,6 +125,40 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
                 Scan.start();
             }
         });
+
+        btnReceiver.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                //scanDevice();
+                threadReceive = new Thread()
+                {
+                    @Override
+                    public void run()
+                    {
+                        while(true)
+                        {
+                            try
+                            {
+                                scanDeviceReceive();
+                            }
+                            catch (Exception e ){
+                                e.printStackTrace();
+                            }
+                            try{
+                                Thread.sleep(30000);
+                            }catch (Exception e){
+                            }
+
+                        }
+                    }
+                };
+                threadReceive.start();
+            }
+        });
+
+
         return rootView;
     }
 
@@ -144,6 +179,7 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
             fragmentDetails.resetViews();
         }
     }
+    //master
     public void scanDeviceA()
     {
         //ghilog("Bat Dau Scan", file_log_ok); // Bat dau Scan -> Ghi log
@@ -249,10 +285,8 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
     }
 
 
-
-
-
-    public void scanDeviceB()
+    //slave
+    public void scanDeviceReceive()
     {
         final DeviceListFragment fragment = (DeviceListFragment) getChildFragmentManager()
                 .findFragmentById(R.id.frag_list);
@@ -262,6 +296,7 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
 
                 @Override
                 public void onSuccess() {
+                    re_connect_slave();
                     Toast.makeText(getActivity(), "Discovery Initiated",
                             Toast.LENGTH_SHORT).show();
                 }
@@ -322,7 +357,11 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
             ProcessBuilder probuilder1 = new ProcessBuilder(cmd1);
             Process p1 = probuilder1.start();
             p1.waitFor();
+            Toast.makeText(getActivity(), "Slave Initiated",
+                    Toast.LENGTH_SHORT).show();
         }catch (Exception e){
+            Toast.makeText(getActivity(), "Slave Failed",
+                    Toast.LENGTH_SHORT).show();
             e.printStackTrace();
         }
     }
@@ -563,7 +602,6 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
         getActivity().registerReceiver(receiver, intentFilter);
 
     }
-
 
 
 }
