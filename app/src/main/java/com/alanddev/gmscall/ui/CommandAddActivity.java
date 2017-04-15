@@ -68,7 +68,7 @@ public class CommandAddActivity extends AppCompatActivity {
         long cmdid=0;
         if(bundle!=null){
             cmdid = bundle.getLong(MwSQLiteHelper.COLUMN_COMMAND_ID, 0);
-            Log.d("BBBBBBB",cmdid+"");
+
         }
 
 
@@ -79,7 +79,6 @@ public class CommandAddActivity extends AppCompatActivity {
             commandController.open();
             command = commandController.getCommandById(cmdid);
             commandController.close();
-            Log.d("DDDDDDD",command.getServer());
             edtserver.setText(command.getServer());
             edtcmd.setText(command.getCmd());
             edttimetest.setText(command.getTimeTest());

@@ -57,6 +57,7 @@ public class CommandFragment extends Fragment {
         //}*/
         //ArrayList<Command> listCommand = getData();
         //List<Command>
+
         adapter = new CommandAdapter(getActivity().getApplicationContext(), inflater, getData());
         listCmd.setAdapter(adapter);
 
@@ -107,9 +108,13 @@ public class CommandFragment extends Fragment {
     private List<Command> getData(){
         CommandController commandController = new CommandController(getContext());
         commandController.open();
+        List<Command> commandList = new ArrayList<Command>();
+        Command cmdTitle = new Command(0, "Cmd", "Server", "Time", "Stream", "Run", "Time2Next", "User", "Pass", "Status", "");
+        commandList.add(cmdTitle);
         List<Command> commands = commandController.getAllCommands();
+        commandList.addAll(commands);
         commandController.close();
-        return commands;
+        return commandList;
     }
 
 
