@@ -26,8 +26,9 @@ android:paddingBottom="8dp">
         android:text="cmd"
         android:width="@dimen/info_command_size"
         android:maxLength="8"
-        android:textColor="@android:color/black"
+
         android:textStyle="bold"
+        android:textColor="#C1C1C1"
         />
 
     <TextView android:id="@+id/server"
@@ -37,7 +38,7 @@ android:paddingBottom="8dp">
         android:maxLength="8"
         android:width="@dimen/info_command_size"
         android:text="Server"
-        android:textColor="@android:color/black"
+        android:textColor="#C1C1C1"
         android:layout_toRightOf="@+id/cmd"
         android:textStyle="bold"/>
 

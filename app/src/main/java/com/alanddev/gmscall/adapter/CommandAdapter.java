@@ -14,6 +14,7 @@ import android.widget.TextView;
 import com.alanddev.gmscall.model.Command;
 import com.alanddev.gmscall.R;
 
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -23,10 +24,13 @@ public class CommandAdapter extends ArrayAdapter<Command> {
 
     private Context mContext;
     private LayoutInflater inflate;
+    private List<Command> datas;
+
     public CommandAdapter(Context context, LayoutInflater inflate, List<Command> commands) {
         super(context, 0, commands);
         mContext=context;
         this.inflate = inflate;
+        this.datas = commands;
     }
 
     @Override
@@ -84,6 +88,12 @@ public class CommandAdapter extends ArrayAdapter<Command> {
         return source;
     }
 
-
-
+    @Override
+    public long getItemId(int position) {
+        Command command = datas.get(position);
+        if(command!=null){
+            return command.getId();
+        }
+        return 0;
+    }
 }

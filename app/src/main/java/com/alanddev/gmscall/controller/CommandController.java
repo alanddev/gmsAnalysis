@@ -48,7 +48,7 @@ public class CommandController {
 	public Command createCommand(Model data ) {
 		ContentValues values = new ContentValues();
 		Command command  = (Command)data;
-		values.put(MwSQLiteHelper.COLUMN_COMMAND_ID, command.getId());
+		//values.put(MwSQLiteHelper.COLUMN_COMMAND_ID, command.getId());
 		values.put(MwSQLiteHelper.COLUMN_COMMAND_SERVER, command.getServer());
 		values.put(MwSQLiteHelper.COLUMN_COMMAND_CMD, command.getCmd());
 		values.put(MwSQLiteHelper.COLUMN_COMMAND_TIME, command.getTimeTest());
@@ -63,6 +63,24 @@ public class CommandController {
 		        values);
 	    return command;
 	  }
+
+	public Command updateCommand(Model data ) {
+		ContentValues values = new ContentValues();
+		Command command  = (Command)data;
+		//values.put(MwSQLiteHelper.COLUMN_COMMAND_ID, command.getId());
+		values.put(MwSQLiteHelper.COLUMN_COMMAND_SERVER, command.getServer());
+		values.put(MwSQLiteHelper.COLUMN_COMMAND_CMD, command.getCmd());
+		values.put(MwSQLiteHelper.COLUMN_COMMAND_TIME, command.getTimeTest());
+		values.put(MwSQLiteHelper.COLUMN_COMMAND_STREAM, command.getStream());
+		values.put(MwSQLiteHelper.COLUMN_COMMAND_NUMBER_RUN, command.getNumber());
+		values.put(MwSQLiteHelper.COLUMN_COMMAND_TIME_NEXT, command.getTimeToNext());
+		values.put(MwSQLiteHelper.COLUMN_COMMAND_USER, command.getUser());
+		values.put(MwSQLiteHelper.COLUMN_COMMAND_PASS, command.getPass());
+		values.put(MwSQLiteHelper.COLUMN_COMMAND_STATUS, command.getStatus());
+		//long insertId;
+		database.update(MwSQLiteHelper.TABLE_COMMAND, values, MwSQLiteHelper.COLUMN_COMMAND_ID + " = ?", new String[]{command.getId() + ""});
+		return command;
+	}
 
 	
 	public void deleteCommand(Command command) {
@@ -99,18 +117,35 @@ public class CommandController {
 		return commands;
 	}
 
+	public Command getCommandById(long id){
+		StringBuffer sql = new StringBuffer("SELECT * FROM ").append(MwSQLiteHelper.TABLE_COMMAND)
+				.append(" WHERE ").append(MwSQLiteHelper.COLUMN_COMMAND_ID).append(" = ?");
+
+		String[] atts = new String[]{id+""};
+		Cursor cursor = database.rawQuery(sql.toString(), atts);
+		cursor.moveToFirst();
+		Command command = (Command) cursorToCommand(cursor);
+		cursor.close();
+		return command;
+	}
+
+
+	public Boolean delete(long id){
+		return database.delete(MwSQLiteHelper.TABLE_COMMAND, MwSQLiteHelper.COLUMN_COMMAND_ID + "=" + id, null) > 0;
+	}
+
 	private Command cursorToCommand(Cursor cursor) {
 		Command command = new Command();
-		command.setId(cursor.getInt(1));
-		command.setServer(cursor.getString(2));
-		command.setCmd(cursor.getString(3));
-		command.setTimeTest(cursor.getString(4));
-		command.setStream(cursor.getString(5));
-		command.setNumber(cursor.getString(6));
-		command.setTimeToNext(cursor.getString(7));
-		command.setUser(cursor.getString(8));
-		command.setPass(cursor.getString(9));
-		command.setStatus(cursor.getString(10));
+		command.setId(cursor.getInt(0));
+		command.setServer(cursor.getString(1));
+		command.setCmd(cursor.getString(2));
+		command.setTimeTest(cursor.getString(3));
+		command.setStream(cursor.getString(4));
+		command.setNumber(cursor.getString(5));
+		command.setTimeToNext(cursor.getString(6));
+		command.setUser(cursor.getString(7));
+		command.setPass(cursor.getString(8));
+		command.setStatus(cursor.getString(9));
 		return command;
 
 	}

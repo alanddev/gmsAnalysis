@@ -121,7 +121,7 @@ public class MwSQLiteHelper extends SQLiteOpenHelper {
 
     private static final String TABLE_COMMAND_CREATE = "CREATE TABLE "
             + TABLE_COMMAND + "("
-            + COLUMN_COMMAND_ID + " INTEGER PRIMARY KEY, "
+            + COLUMN_COMMAND_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
             + COLUMN_COMMAND_SERVER + " text not null, "
             + COLUMN_COMMAND_CMD + " text not null, "
             + COLUMN_COMMAND_TIME + " text not null, "
