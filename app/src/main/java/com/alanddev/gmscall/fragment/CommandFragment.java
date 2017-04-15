@@ -64,10 +64,12 @@ public class CommandFragment extends Fragment {
         listCmd.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                long commanid = parent.getItemIdAtPosition(position);
-                Intent intent = new Intent(getContext(), CommandAddActivity.class);
-                intent.putExtra(MwSQLiteHelper.COLUMN_COMMAND_ID,commanid);
-                startActivityForResult(intent,Constant.COMMAND_ADD_RESULT);
+                if(position>0) {
+                    long commanid = parent.getItemIdAtPosition(position);
+                    Intent intent = new Intent(getContext(), CommandAddActivity.class);
+                    intent.putExtra(MwSQLiteHelper.COLUMN_COMMAND_ID, commanid);
+                    startActivityForResult(intent, Constant.COMMAND_ADD_RESULT);
+                }
             }
         });
 
