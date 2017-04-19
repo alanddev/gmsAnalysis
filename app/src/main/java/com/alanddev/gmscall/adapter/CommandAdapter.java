@@ -74,16 +74,16 @@ public class CommandAdapter extends ArrayAdapter<Command> {
     private String createFormatTableString(String source){
         int length = source.length();
         int max_length = 6 ;
-        String delimiter = "|";
+        //String delimiter = "|";
 
         if (length >= max_length){
-            source = source.substring(0,max_length) + delimiter;
+            source = source.substring(0,max_length); //+ delimiter;
         }else{
             int different = max_length - length;
             for(int i = 0 ; i <different ; i++){
                 source += " ";
             }
-            source += delimiter;
+            //source += delimiter;
         }
         return source;
     }

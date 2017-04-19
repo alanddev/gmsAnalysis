@@ -107,7 +107,7 @@ public class CellAdapter extends BaseAdapter {
         }
     }
 
-    public void setData(List<Cell> cells){
+    /*public void setData(List<Cell> cells){
         this.cells=cells;
-    }
+    }*/
 }

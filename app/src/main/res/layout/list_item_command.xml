@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-android:paddingTop="8dp"
-android:paddingBottom="8dp">
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:paddingBottom="8dp"
+    android:paddingTop="8dp">
 
-<!--<ImageView
-    android:id="@+id/icon"
-    android:src="@mipmap/add1"
-    android:layout_width="24dp"
-    android:layout_height="24dp"
-    android:scaleType="fitXY"
-    android:layout_alignParentLeft="true"
-    android:layout_marginLeft="2dp"
-    />-->
-
+    <!--<ImageView
+        android:id="@+id/icon"
+        android:src="@mipmap/add1"
+        android:layout_width="24dp"
+        android:layout_height="24dp"
+        android:scaleType="fitXY"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="2dp"
+        />-->
 
 
     <!--android:layout_toRightOf="@+id/icon"-->
@@ -22,107 +22,126 @@ android:paddingBottom="8dp">
         android:id="@+id/cmd"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_command_size"
-        android:text="cmd"
         android:width="@dimen/info_command_size"
-        android:maxLength="8"
-
-        android:textStyle="bold"
+        android:ellipsize="marquee"
+        android:maxLines="1"
+        android:gravity="center_horizontal"
+        android:text="cmd"
         android:textColor="#C1C1C1"
-        />
+        android:textSize="@dimen/text_command_size"
+        android:textStyle="bold"
+        android:layout_marginRight="3dp"/>
 
-    <TextView android:id="@+id/server"
+    <TextView
+        android:id="@+id/server"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_command_size"
-        android:maxLength="8"
         android:width="@dimen/info_command_size"
+        android:ellipsize="marquee"
+        android:maxLines="1"
         android:text="Server"
         android:textColor="#C1C1C1"
-        android:layout_toRightOf="@+id/cmd"
-        android:textStyle="bold"/>
+        android:textSize="@dimen/text_command_size"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:layout_marginRight="3dp"/>
 
-    <TextView android:id="@+id/elapseTime"
+    <TextView
+        android:id="@+id/elapseTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_command_size"
-        android:maxLength="8"
         android:width="@dimen/info_command_size"
+        android:ellipsize="marquee"
+        android:maxLines="1"
         android:text="time:"
         android:textColor="@android:color/holo_blue_dark"
-        android:layout_toRightOf="@+id/server"
-        android:textStyle="bold"/>
+        android:textSize="@dimen/text_command_size"
+        android:textStyle="bold"
+        android:gravity="center_horizontal"
+        android:layout_marginRight="3dp"/>
 
-    <TextView android:id="@+id/stream"
+    <TextView
+        android:id="@+id/stream"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_command_size"
+        android:layout_marginRight="3dp"
         android:width="@dimen/info_command_size"
-        android:maxLength="8"
+        android:ellipsize="marquee"
+        android:gravity="center_horizontal"
+        android:maxLines="1"
         android:text="Stream:"
         android:textColor="@android:color/holo_blue_dark"
-        android:layout_toRightOf="@+id/elapseTime"
-        android:textStyle="bold"/>
+        android:textSize="@dimen/text_command_size"
+        android:textStyle="bold" />
 
 
-
-    <TextView android:id="@+id/numberRun"
+    <TextView
+        android:id="@+id/numberRun"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_command_size"
+        android:gravity="center_horizontal"
         android:width="@dimen/info_command_size"
-        android:maxLength="8"
+        android:ellipsize="marquee"
+        android:maxLines="1"
         android:text="Number Run"
         android:textColor="@android:color/holo_orange_dark"
+        android:textSize="@dimen/text_command_size"
         android:textStyle="bold"
-        android:layout_toRightOf="@+id/stream"
-         />
+        android:layout_marginRight="3dp"/>
 
-    <TextView android:id="@+id/timeNext"
+    <TextView
+        android:id="@+id/timeNext"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_command_size"
+        android:gravity="center_horizontal"
         android:width="@dimen/info_command_size"
-        android:maxLength="8"
+        android:ellipsize="marquee"
+        android:maxLines="1"
         android:text="Time to next"
         android:textColor="@android:color/holo_orange_dark"
-        android:layout_toRightOf="@+id/numberRun"
-        android:textStyle="bold"/>
+        android:textSize="@dimen/text_command_size"
+        android:textStyle="bold"
+        android:layout_marginRight="3dp"/>
 
-    <TextView android:id="@+id/user"
+    <TextView
+        android:id="@+id/user"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_command_size"
-        android:maxLength="8"
+        android:gravity="center_horizontal"
         android:width="@dimen/info_command_size"
+        android:ellipsize="marquee"
+        android:maxLines="1"
         android:text="User"
         android:textColor="@android:color/holo_green_dark"
+        android:textSize="@dimen/text_command_size"
         android:textStyle="bold"
-        android:layout_toRightOf="@+id/timeNext" />
+        android:layout_marginRight="3dp"/>
 
 
-    <TextView android:id="@+id/pass"
+    <TextView
+        android:id="@+id/pass"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_command_size"
         android:width="@dimen/info_command_size"
-        android:maxLength="8"
+        android:ellipsize="marquee"
+        android:maxLines="1"
         android:text="Pass"
-        android:textColor="@android:color/holo_green_dark"
-        android:layout_toRightOf="@+id/user"
-        android:textStyle="bold"/>
+        android:gravity="center_horizontal"
+        android:textSize="@dimen/text_command_size"
+        android:textStyle="bold"
+        android:layout_marginRight="3dp"/>
 
     <TextView
         android:id="@+id/status"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="@dimen/text_command_size"
+        android:gravity="center_horizontal"
         android:width="@dimen/info_command_size"
-        android:maxLength="8"
+        android:ellipsize="marquee"
+        android:maxLines="1"
         android:text="Status"
         android:textColor="@android:color/holo_red_light"
-        android:textStyle="bold"
-        android:layout_toRightOf="@+id/pass"
-    />
+        android:textSize="@dimen/text_command_size"
+        android:textStyle="bold" />
 
-</RelativeLayout>
+</LinearLayout>
