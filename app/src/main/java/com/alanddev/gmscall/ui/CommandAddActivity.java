@@ -12,7 +12,9 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.alanddev.gmscall.R;
@@ -30,7 +32,7 @@ import java.util.Date;
 public class CommandAddActivity extends AppCompatActivity {
 
     private EditText edtserver;
-    private EditText edtcmd;
+    private Spinner spincmd;
     private EditText edttimetest;
     private EditText edtstream;
     private EditText edtnumber;
@@ -53,7 +55,7 @@ public class CommandAddActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         edtserver = (EditText)findViewById(R.id.edtserver);
-        edtcmd = (EditText)findViewById(R.id.edtcmd);
+        spincmd = (Spinner)findViewById(R.id.spincmd);
         edttimetest = (EditText)findViewById(R.id.edttimetest);
         edtstream = (EditText)findViewById(R.id.edtstream);
         edtnumber = (EditText)findViewById(R.id.edtnumber);
@@ -63,6 +65,11 @@ public class CommandAddActivity extends AppCompatActivity {
         edtstatus = (EditText)findViewById(R.id.edtstatus);
 
         commandController = new CommandController(this);
+
+        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
+                R.array.command_array, android.R.layout.simple_spinner_item);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spincmd.setAdapter(adapter);
 
         Bundle bundle = getIntent().getExtras();
         long cmdid=0;
@@ -80,7 +87,7 @@ public class CommandAddActivity extends AppCompatActivity {
             command = commandController.getCommandById(cmdid);
             commandController.close();
             edtserver.setText(command.getServer());
-            edtcmd.setText(command.getCmd());
+            spincmd.setSelection(adapter.getPosition(command.getCmd()));
             edttimetest.setText(command.getTimeTest());
             edtstream.setText(command.getStream());
             edtnumber.setText(command.getNumber());
@@ -88,6 +95,7 @@ public class CommandAddActivity extends AppCompatActivity {
             edtuser.setText(command.getUser());
             edtpass.setText(command.getPass());
             edtstatus.setText(command.getStatus());
+
         }
 
     }
@@ -169,7 +177,7 @@ public class CommandAddActivity extends AppCompatActivity {
         commandController.open();
         Command newcommand = new Command();
         newcommand.setServer(edtserver.getText().toString());
-        newcommand.setCmd(edtcmd.getText().toString());
+        newcommand.setCmd(String.valueOf(spincmd.getSelectedItem()));
         newcommand.setTimeTest(edttimetest.getText().toString());
         newcommand.setStream(edtstream.getText().toString());
         newcommand.setTimeToNext(edttimenext.getText().toString());
