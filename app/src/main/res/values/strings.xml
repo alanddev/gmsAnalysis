@@ -123,4 +123,13 @@
     <string name="dialog_no_button">No</string>
 
     <string name="action_save">Done</string>
+
+
+    <string-array name="command_array">
+        <item>Call CSSR</item>
+        <item>CALL MOS</item>
+        <item>Loop</item>
+        <item>End Loop</item>
+        <item>Wait</item>
+    </string-array>
 </resources>

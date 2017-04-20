@@ -40,14 +40,20 @@
             android:text="CMD"
             android:layout_gravity="center_vertical"
             android:textColor="#C1C1C1"/>
-        <EditText android:id="@+id/edtcmd"
+        <!--<EditText android:id="@+id/edtcmd"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="10dp"
 
             android:layout_gravity="center_vertical"
             android:textColor="#C1C1C1"
-            />
+            />-->
+        <Spinner
+            android:id="@+id/spincmd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_gravity="center_vertical"/>
     </LinearLayout>
     <LinearLayout android:layout_width="match_parent"
         android:layout_height="wrap_content"
