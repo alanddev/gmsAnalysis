@@ -10,15 +10,18 @@
     <include
         layout="@layout/trans_header_list"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/header" />
     <include
         layout="@layout/main_cell_row"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/middle" />
     <include
         layout="@layout/cell_table"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:id="@+id/footer" />
 
 
 </LinearLayout>

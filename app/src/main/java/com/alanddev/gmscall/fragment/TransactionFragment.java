@@ -15,6 +15,7 @@ import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.ListView;
 import android.widget.ProgressBar;
 import android.widget.TableLayout;
@@ -59,6 +60,7 @@ public class TransactionFragment extends Fragment {
     private double height;
     private double nwAccuracy;
     private double speed;
+    private String nwType;
 
 
     private String networkType;
@@ -149,30 +151,6 @@ public class TransactionFragment extends Fragment {
         View rootView = inflater.inflate(R.layout.fragment_main, container, false);
         ListView lstcell = (ListView) rootView.findViewById(R.id.lstcell);
         cells = new ArrayList<Cell>();
-        /*Cell cell = new Cell();
-        cell.setBand("03");
-        cell.setEarfcn(1503);
-        cell.setPci(499);
-        cell.setRsrp(Float.valueOf("75.7"));
-        cell.setRsrq(Float.valueOf("6.8"));
-        cells.add(cell);
-        cell = new Cell();
-        cell.setBand("04");
-        cell.setEarfcn(1570);
-        cell.setPci(209);
-        cell.setRsrp(Float.valueOf("60.7"));
-        cell.setRsrq(Float.valueOf("5.8"));
-        cells.add(cell);
-
-        cell = new Cell();
-        cell.setBand("03");
-        cell.setEarfcn(1270);
-        cell.setPci(109);
-        cell.setRsrp(Float.valueOf("80.7"));
-        cell.setRsrq(Float.valueOf("7.8"));
-        cells.add(cell);*/
-
-
 
         final CellAdapter adapter = new CellAdapter(getActivity().getApplicationContext(),cells);
         lstcell.setAdapter(adapter);
@@ -424,6 +402,65 @@ public class TransactionFragment extends Fragment {
 
     public void initTitle(View v){
         // init TextView;
+        String type = net.getType();
+        if (type.equals("GSM")){
+
+
+        }
+        TextView tvOneFirst = (TextView)v.findViewById(R.id.earfcn_title);
+        TextView tvTwoFirst = (TextView)v.findViewById(R.id.pci_title);
+        TextView tvThirdFirst = (TextView)v.findViewById(R.id.rsrp_title);
+        TextView tvFourFirst = (TextView)v.findViewById(R.id.sinr_title);
+        TextView tvOneSecond = (TextView)v.findViewById(R.id.plmn_title);
+        TextView tvTwoSecond = (TextView)v.findViewById(R.id.band_title);
+        TextView tvThirdSecond = (TextView)v.findViewById(R.id.tac_title);
+        TextView tvFourSecond = (TextView)v.findViewById(R.id.ecellid_title);
+        LinearLayout layoutMiddle = (LinearLayout)v.findViewById(R.id.middle);
+        TextView tvTitleNetwork  = (TextView)v.findViewById(R.id.title_network);
+        type = "2G";
+        switch (type){
+            case "2G":
+                tvOneFirst.setText(R.string.mcc);
+                tvTwoFirst.setText(R.string.mnc);
+                tvThirdFirst.setText(R.string.rssi);
+                tvFourFirst.setText(R.string.arfcn);
+                tvOneSecond.setText(R.string.plmn);
+                tvTwoSecond.setText(R.string.band);
+                tvThirdSecond.setText(R.string.lac);
+                tvFourSecond.setText(R.string.cellID);
+                layoutMiddle.setVisibility(View.GONE);
+                tvTitleNetwork.setText(R.string.GSM);
+                break;
+            case "3G":
+                tvOneFirst.setText(R.string.mcc);
+                tvTwoFirst.setText(R.string.mnc);
+                tvThirdFirst.setText(R.string.rscp);
+                tvFourFirst.setText(R.string.ecno);
+                tvOneSecond.setText(R.string.psc);
+                tvTwoSecond.setText(R.string.band);
+                tvThirdSecond.setText(R.string.lac);
+                tvFourSecond.setText(R.string.cellID);
+                layoutMiddle.setVisibility(View.GONE);
+                tvTitleNetwork.setText(R.string.WDMA);
+                break;
+            case "4G":
+                tvOneFirst.setText(R.string.mcc);
+                tvTwoFirst.setText(R.string.mnc);
+                tvThirdFirst.setText(R.string.rsrp);
+                tvFourFirst.setText(R.string.rsrq);
+                tvOneSecond.setText(R.string.plmn);
+                tvTwoSecond.setText(R.string.band);
+                tvThirdSecond.setText(R.string.lac);
+                tvFourSecond.setText(R.string.cellID);
+                tvTitleNetwork.setText(R.string.LTE);
+                break;
+            default:
+                break;
+        }
+
+
+
+
         tvRSCP = (TextView)v.findViewById(R.id.rsrp_progress_title);
         proRSCP = (ProgressBar)v.findViewById(R.id.rsrp_value);
         tvSNR = (TextView)v.findViewById(R.id.sinr_progress_title);
@@ -433,31 +470,12 @@ public class TransactionFragment extends Fragment {
         tvLAC = (TextView)v.findViewById(R.id.plmn_value);
         tvRNC = (TextView)v.findViewById(R.id.band_value);
         tvCellID = (TextView)v.findViewById(R.id.ecellid_value);
-        /*tvMCC = (TextView)v.findViewById(R.id.mcc);
-        tvMNC = (TextView)v.findViewById(R.id.mnc);
-        tvLAC = (TextView)v.findViewById(R.id.lac);
-        tvCellID = (TextView)v.findViewById(R.id.cellID);
-        tvSNR = (TextView)v.findViewById(R.id.snr);
-        tvRNC = (TextView)v.findViewById(R.id.rnc);
-        tvType = (TextView)v.findViewById(R.id.type);
-        tvEcNo = (TextView)v.findViewById(R.id.ecno);
-        tvOperator = (TextView)v.findViewById(R.id.operator);
 
-        tvLat = (TextView)v.findViewById(R.id.latitude);
-        tvLong = (TextView)v.findViewById(R.id.longitude);
-        tvNwAccuracy = (TextView)v.findViewById(R.id.nw_accuracy);
-        tvSpeed = (TextView)v.findViewById(R.id.speed);
-        tvGround = (TextView)v.findViewById(R.id.ground);
-        tvHeight = (TextView)v.findViewById(R.id.height);
-        tvAltitude = (TextView)v.findViewById(R.id.altitude);
 
-        tvData = (TextView)v.findViewById(R.id.data);
-        tvRsrp = (TextView)v.findViewById(R.id.rsrp);
-        tvRsrq = (TextView)v.findViewById(R.id.rsrq);
-        tvCqi = (TextView)v.findViewById(R.id.cqi);*/
     }
 
     public void setTitleValue(){
+
         tvRSCP.setText(dBm + " dBm");
         int idBm = Math.abs((int)dBm);
 
@@ -470,27 +488,7 @@ public class TransactionFragment extends Fragment {
         tvLAC.setText(String.valueOf(lac));
         tvRNC.setText(String.valueOf(RNC));
         tvCellID.setText(String.valueOf(cellID));
-        /*tvOperator.setText(titleOperator + ": " + net.getOperator());
 
-        tvEcNo.setText(titleECNO +": " + ecIO);
-        tvSNR.setText(titleSNR + ": " + SNR);
-        tvLAC.setText(titleLAC + ": " + lac);
-        tvMCC.setText(titleMCC + ":" + net.getMcc());
-        tvMNC.setText(titleMNC + ":" + net.getMnc());
-        tvCellID.setText(titleCellID + ": " + cellID);
-        tvRNC.setText(titleRNC + ": " + RNC);
-        tvData.setText(titleData + ": " + net.getData());
-        tvNwAccuracy.setText(titleNwAccuracy + ": " + net.getNwAccuracy());
-        tvHeight.setText(titleHeight + ": " + net.getHeight());
-        tvGround.setText(titleGround + ": " + net.getGround());
-        tvSpeed.setText(titleSpeed + ": " + net.getSpeed());
-        tvAltitude.setText(titleAltitude + ": " + net.getAltitude());
-        tvLat.setText(titleLatitude + ": " + latitude);
-        tvLong.setText(titleLongitude + ": " + longitude);
-        tvType.setText(titleType +": " + net.getType());
-        tvRsrp.setText("Rsrp:" + rsrp);
-        tvRsrq.setText("Rsrq:" + rsrq);
-        tvCqi.setText("CQI:" + cqi);*/
 
     }
 }

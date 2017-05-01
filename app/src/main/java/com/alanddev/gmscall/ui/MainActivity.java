@@ -28,6 +28,7 @@ import com.alanddev.gmscall.fragment.WifiDirectFragment;
 import com.alanddev.gmscall.helper.MwSQLiteHelper;
 import com.alanddev.gmscall.util.NwConst;
 import com.alanddev.gmscall.util.Utils;
+import com.ptsp.phoneapi.PhoneApi;
 
 import java.io.File;
 
@@ -44,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private SharedPreferences mShaPref;
     private NavigationView navigationView;
     private TabLayout tabLayout;
+    PhoneApi phoneApi;
     ImageView imageView;
 
 
@@ -54,6 +56,10 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+
+
+
         setContentView(R.layout.activity_main);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);

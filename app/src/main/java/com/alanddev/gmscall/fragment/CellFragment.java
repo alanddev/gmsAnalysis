@@ -1,46 +1,34 @@
 package com.alanddev.gmscall.fragment;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.location.Criteria;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
-import android.net.ConnectivityManager;
-import android.net.NetworkInfo;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Bundle;
-import android.os.Handler;
 import android.provider.Settings;
 import android.support.v4.app.Fragment;
-import android.telephony.NeighboringCellInfo;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
-import android.telephony.gsm.GsmCellLocation;
 import android.text.format.DateFormat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.widget.LinearLayout;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.alanddev.gmscall.controller.NetworkController;
 import com.alanddev.gmscall.listener.NwPhoneStateListener;
 import com.alanddev.gmscall.model.Network;
 import com.alanddev.gmscall.util.Constant;
 import com.alanddev.gmscall.util.NwConst;
 import com.alanddev.gmscall.util.NwUtils;
 import com.alanddev.gmscall.R;
-import com.google.android.gms.maps.model.LatLng;
 
 public class CellFragment extends Fragment {
 	
@@ -151,7 +139,6 @@ public class CellFragment extends Fragment {
 	                    net.setMyLongitude(longitude);
 	                }
 	            };
-	
 	   		
 	
 	@Override
