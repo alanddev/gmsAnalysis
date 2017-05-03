@@ -18,6 +18,8 @@ public abstract class NwPhoneStateListener extends PhoneStateListener {
 	private int lteRssnr; // reference LTE RSSNR
 	private int lteCqi; // channel quality indication
 	private int lteSignalStrength;
+	private int gsmArfcn;
+    private int gsmRssi;
 
 	public static String LOG_TAG = "CustomPhoneStateListener";
 
@@ -43,6 +45,8 @@ public abstract class NwPhoneStateListener extends PhoneStateListener {
 			dBmReturn = 2 * signalStrength.getGsmSignalStrength() - 113;
 			ecReturn = 0;
 			snrReturn = 0;
+            gsmArfcn = 0;
+            gsmRssi = 0;
 		}
 		else if (signalStrength.getCdmaDbm() > 0){
 			dBmReturn = signalStrength.getCdmaDbm();
@@ -121,4 +125,8 @@ public abstract class NwPhoneStateListener extends PhoneStateListener {
 	public int getLteSignalStrength() {
 		return lteSignalStrength;
 	}
+
+    public int getGsmRssi (){return gsmRssi;}
+
+    public int getGsmArfcn() {return gsmArfcn;}
 }

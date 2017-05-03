@@ -65,6 +65,7 @@ public class Network extends Model {
 		altitude = 0.0;
 		ground = 0.0;
 		speed = 0.0;
+		type = "HSPA";
 	}
 	
 	

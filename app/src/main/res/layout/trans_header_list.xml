@@ -154,7 +154,7 @@
             android:layout_height="20dp"
 
             android:textStyle="bold"
-            android:text="TAC"
+            android:text="@string/lac"
             android:textSize="14sp"
             android:textColor="@color/colorTextColor"/>
         <TextView

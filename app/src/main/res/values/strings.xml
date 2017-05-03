@@ -64,6 +64,7 @@
     <string name="lac">LAC</string>
     <string name="node">Node</string>
     <string name="cellID">CELLID</string>
+    <string name = "psc">PSC</string>
 
     <string name="level">Level</string>
     <string name="qual">Qual</string>
@@ -75,6 +76,11 @@
     <string name="rnc">RNC</string>
     <string name="mnc">MNC</string>
     <string name="rscp">RSCP</string>
+    <string name="rsrp">RSRP</string>
+    <string name="rsrq">RSRQ</string>
+    <string name="rssi">RSSI</string>
+    <string name="band">Band</string>
+    <string name="plmn">PLMN</string>
     <string name="longitude">Longitude</string>
     <string name="latitude">Latitude</string>
     <string name="speed">Speed</string>
@@ -88,6 +94,11 @@
     <string name="nw_accuracy">NW Accuracy</string>
     <string name="ecno">ECNO</string>
     <string name="snr">SNR</string>
+    <string name = "arfcn">ARFCN</string>
+    <string name = "GSM">GSM Cell Table</string>
+    <string name = "WDMA">WDMA Cell Table</string>
+    <string name = "LTE">LTE Cell Table</string>
+
     <string name="serving_time">Serving time</string>
 
     <string name="snippet">Snippet</string>
