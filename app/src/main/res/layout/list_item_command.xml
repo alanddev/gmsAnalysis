@@ -30,7 +30,12 @@
         android:textColor="#C1C1C1"
         android:textSize="@dimen/text_command_size"
         android:textStyle="bold"
-        android:layout_marginRight="3dp"/>
+        android:layout_marginRight="1dp"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#C1C1C1" />
 
     <TextView
         android:id="@+id/server"
@@ -44,7 +49,13 @@
         android:textSize="@dimen/text_command_size"
         android:textStyle="bold"
         android:gravity="center_horizontal"
-        android:layout_marginRight="3dp"/>
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#C1C1C1" />
 
     <TextView
         android:id="@+id/elapseTime"
@@ -58,13 +69,18 @@
         android:textSize="@dimen/text_command_size"
         android:textStyle="bold"
         android:gravity="center_horizontal"
-        android:layout_marginRight="3dp"/>
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_blue_dark" />
 
     <TextView
         android:id="@+id/stream"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginRight="3dp"
         android:width="@dimen/info_command_size"
         android:ellipsize="marquee"
         android:gravity="center_horizontal"
@@ -72,8 +88,14 @@
         android:text="Stream:"
         android:textColor="@android:color/holo_blue_dark"
         android:textSize="@dimen/text_command_size"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"/>
 
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_blue_dark" />
 
     <TextView
         android:id="@+id/numberRun"
@@ -87,7 +109,13 @@
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="@dimen/text_command_size"
         android:textStyle="bold"
-        android:layout_marginRight="3dp"/>
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_orange_dark" />
 
     <TextView
         android:id="@+id/timeNext"
@@ -101,7 +129,13 @@
         android:textColor="@android:color/holo_orange_dark"
         android:textSize="@dimen/text_command_size"
         android:textStyle="bold"
-        android:layout_marginRight="3dp"/>
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_orange_dark" />
 
     <TextView
         android:id="@+id/user"
@@ -115,8 +149,14 @@
         android:textColor="@android:color/holo_green_dark"
         android:textSize="@dimen/text_command_size"
         android:textStyle="bold"
-        android:layout_marginRight="3dp"/>
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"/>
 
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="@android:color/holo_green_dark" />
 
     <TextView
         android:id="@+id/pass"
@@ -129,7 +169,14 @@
         android:gravity="center_horizontal"
         android:textSize="@dimen/text_command_size"
         android:textStyle="bold"
-        android:layout_marginRight="3dp"/>
+        android:layout_marginLeft="1dp"
+        android:layout_marginRight="1dp"
+        android:textColor="#C1C1C1"/>
+
+    <View
+        android:layout_width="1dp"
+        android:layout_height="match_parent"
+        android:background="#C1C1C1" />
 
     <TextView
         android:id="@+id/status"
@@ -142,6 +189,7 @@
         android:text="Status"
         android:textColor="@android:color/holo_red_light"
         android:textSize="@dimen/text_command_size"
-        android:textStyle="bold" />
+        android:textStyle="bold"
+        android:layout_marginLeft="1dp"/>
 
 </LinearLayout>

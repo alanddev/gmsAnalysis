@@ -67,8 +67,8 @@ public class CommandAddActivity extends AppCompatActivity {
         commandController = new CommandController(this);
 
         ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this,
-                R.array.command_array, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                R.array.command_array, R.layout.spinner_item);
+        adapter.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spincmd.setAdapter(adapter);
 
         Bundle bundle = getIntent().getExtras();
