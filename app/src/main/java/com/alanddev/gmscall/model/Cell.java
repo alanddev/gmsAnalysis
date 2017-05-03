@@ -10,6 +10,24 @@ public class Cell {
     private int pci;
     private float rsrp;
     private float rsrq;
+    private float rssi;
+    private float arfcn;
+
+    public float getRssi() {
+        return rssi;
+    }
+
+    public void setRssi(float rssi) {
+        this.rssi = rssi;
+    }
+
+    public float getArfcn() {
+        return arfcn;
+    }
+
+    public void setArfcn(float arfcn) {
+        this.arfcn = arfcn;
+    }
 
     public String getBand() {
         return band;

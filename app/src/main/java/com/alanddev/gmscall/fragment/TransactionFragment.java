@@ -152,8 +152,7 @@ public class TransactionFragment extends Fragment {
         ListView lstcell = (ListView) rootView.findViewById(R.id.lstcell);
         cells = new ArrayList<Cell>();
 
-        final CellAdapter adapter = new CellAdapter(getActivity().getApplicationContext(),cells);
-        lstcell.setAdapter(adapter);
+
         activity = getActivity();
         tel = (TelephonyManager)activity.getSystemService(Context.TELEPHONY_SERVICE);
         //String networkOperator = tel.getNetworkOperator();
@@ -194,7 +193,7 @@ public class TransactionFragment extends Fragment {
         speed = currentLocation.getSpeed();
         ground = currentLocation.getBearing();
 
-        initTable();
+        //initTable();
         initTitle(rootView);
 
 
@@ -215,7 +214,8 @@ public class TransactionFragment extends Fragment {
         net.setSpeed(speed);
         setTitleValue();
 
-
+        final CellAdapter adapter = new CellAdapter(getActivity().getApplicationContext(),cells);
+        lstcell.setAdapter(adapter);
         tel.listen(new NwPhoneStateListener(getActivity()){
                        @Override
                        protected void updateActivity() {
@@ -376,11 +376,11 @@ public class TransactionFragment extends Fragment {
         addColumnInRow(row,time);
         addColumnInRow(row,Integer.toString(net.getLac()));
         addColumnInRow(row,Integer.toString(net.getRNC()));
-        addColumnInRow(row,Integer.toString(net.getCellID()));
-        addColumnInRow(row,Double.toString(net.getdBm()));
-        addColumnInRow(row,Double.toString(net.getEcIO()));
-        addColumnInRow(row,net.getType());
-        addColumnInRow(row,"1" + index);
+//        addColumnInRow(row,Integer.toString(net.getCellID()));
+//        addColumnInRow(row,Double.toString(net.getdBm()));
+//        addColumnInRow(row,Double.toString(net.getEcIO()));
+//        addColumnInRow(row,net.getType());
+//        addColumnInRow(row,"1" + index);
         tabNetwork.addView(row,index);
     }
 
@@ -403,10 +403,14 @@ public class TransactionFragment extends Fragment {
     public void initTitle(View v){
         // init TextView;
         String type = net.getType();
-        if (type.equals("GSM")){
-
-
+        if (type.equals("HSPA")||type.equals("HSPAP")){
+            type = "2G";
+        }else if (type.equals("LTE")){
+            type = "4G";
+        }else{
+            type = "3G";
         }
+
         TextView tvOneFirst = (TextView)v.findViewById(R.id.earfcn_title);
         TextView tvTwoFirst = (TextView)v.findViewById(R.id.pci_title);
         TextView tvThirdFirst = (TextView)v.findViewById(R.id.rsrp_title);
@@ -417,7 +421,7 @@ public class TransactionFragment extends Fragment {
         TextView tvFourSecond = (TextView)v.findViewById(R.id.ecellid_title);
         LinearLayout layoutMiddle = (LinearLayout)v.findViewById(R.id.middle);
         TextView tvTitleNetwork  = (TextView)v.findViewById(R.id.title_network);
-        type = "2G";
+
         switch (type){
             case "2G":
                 tvOneFirst.setText(R.string.mcc);
@@ -457,8 +461,6 @@ public class TransactionFragment extends Fragment {
             default:
                 break;
         }
-
-
 
 
         tvRSCP = (TextView)v.findViewById(R.id.rsrp_progress_title);

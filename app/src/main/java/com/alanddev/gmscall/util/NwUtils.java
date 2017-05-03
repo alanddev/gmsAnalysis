@@ -12,8 +12,10 @@ import android.net.TrafficStats;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Handler;
+import android.telephony.CellLocation;
 import android.telephony.NeighboringCellInfo;
 import android.telephony.TelephonyManager;
+import android.telephony.cdma.CdmaCellLocation;
 import android.telephony.gsm.GsmCellLocation;
 
 public class NwUtils {
@@ -29,24 +31,45 @@ public class NwUtils {
 		Network networkReturn = new Network();
 		String networkOperator = tel.getNetworkOperator();
 		int cid;
-		
-		GsmCellLocation cellLocation = (GsmCellLocation)tel.getCellLocation();
-		
-		String operatorName = tel.getNetworkOperatorName();
-		networkReturn.setOperator(operatorName);
-		if (networkOperator != null && networkOperator.length() >=3) {
-			networkReturn.setMcc(networkOperator.substring(0, 3));
-			networkReturn.setMnc(networkOperator.substring(3));        
+		CellLocation cellLocation = tel.getCellLocation();
+
+		//GsmCellLocation cellLocation = (GsmCellLocation)tel.getCellLocation();
+
+
+		try {
+			String operatorName = tel.getNetworkOperatorName();
+			networkReturn.setOperator(operatorName);
+			if (networkOperator != null && networkOperator.length() >= 3) {
+				networkReturn.setMcc(networkOperator.substring(0, 3));
+				networkReturn.setMnc(networkOperator.substring(3));
+			}
+			GsmCellLocation gsmcellLocation;
+			CdmaCellLocation cdmaCellLocation;
+			String clsCell = cellLocation.getClass().toString();
+
+			if (clsCell.contains("GsmCellLocation")){
+				gsmcellLocation = (GsmCellLocation)tel.getCellLocation();
+				networkReturn.setLac(gsmcellLocation.getLac());
+				networkReturn.setCid(gsmcellLocation.getCid());
+				cid = networkReturn.getCid();
+				networkReturn.setCellID(cid & 0xffff);
+				networkReturn.setRNC((cid >> 16) & 0xffff);
+
+			}else if (clsCell.contains("CdmaCellLocation")){
+				cdmaCellLocation = (CdmaCellLocation)tel.getCellLocation();
+
+				//networkReturn.setLac(cdmaCellLocation.getBaseStationLatitude());
+				//networkReturn.setCid(cdmaCellLocation.getCid());
+			}
+
+
+
+
+			networkReturn.setType(getNetworkTypeName(tel.getNetworkType()));
+			networkReturn.setData(getWifi(networkReturn, activity));
+		}catch(Exception ex){
+			ex.printStackTrace();
 		}
-
-		networkReturn.setLac(cellLocation.getLac());
-		networkReturn.setCid(cellLocation.getCid());
-		cid = networkReturn.getCid();
-		networkReturn.setCellID(cid & 0xffff);
-		networkReturn.setRNC((cid >>16) & 0xffff);
-		networkReturn.setType(getNetworkTypeName(tel.getNetworkType()));
-		networkReturn.setData(getWifi(networkReturn,activity));
-
 		return networkReturn;
 	}
 	

@@ -24,10 +24,12 @@ import java.util.List;
 public class CellAdapter extends BaseAdapter {
     private List<Cell> cells;
     private Context mContext;
+    private String networkType;
 
     public CellAdapter(Context context, List<Cell> cells){
         this.cells = cells;
         this.mContext = context;
+        //this.networkType = networkType;
     }
     @Override
     public int getCount() {
@@ -79,17 +81,33 @@ public class CellAdapter extends BaseAdapter {
         } else {
             viewHolder = (Viewholder) convertView.getTag();
         }
+        networkType = "HSPA";
+        // 2G
+        if (networkType.equals("HSPA")||networkType.equals("HSPAP")){
+            viewHolder.txtnoname.setText(String.valueOf(cell.getArfcn()));
+            int rssi =  Math.abs((int)cell.getRssi());
+            viewHolder.prorsrq.setProgress(rssi);
+            viewHolder.txtband.setVisibility(View.GONE);
+            viewHolder.txtearfcn.setVisibility(View.GONE);
+            viewHolder.txtpci.setVisibility(View.GONE);
+            viewHolder.prorsrp.setVisibility(View.GONE);
+            viewHolder.txtrsrp.setVisibility(View.GONE);
+            viewHolder.txtrsrq.setVisibility(View.GONE);
+        }else if (networkType.equals("LTE")){
+            viewHolder.txtnoname.setText("s");
+            viewHolder.txtband.setText(String.valueOf(cell.getBand()));
+            viewHolder.txtearfcn.setText(String.valueOf(cell.getEarfcn()));
+            viewHolder.txtpci.setText(String.valueOf(cell.getPci()));
+            int rsrp = Math.abs((int)cell.getRsrp());
+            viewHolder.prorsrp.setProgress(rsrp);
+            int rsrq =  Math.abs((int)cell.getRsrq());
+            viewHolder.prorsrq.setProgress(rsrq);
+            viewHolder.txtrsrp.setText(String.valueOf(cell.getRsrp()));
+            viewHolder.txtrsrq.setText(String.valueOf(cell.getRsrq()));
+        }else{
 
-        viewHolder.txtnoname.setText("s");
-        viewHolder.txtband.setText(String.valueOf(cell.getBand()));
-        viewHolder.txtearfcn.setText(String.valueOf(cell.getEarfcn()));
-        viewHolder.txtpci.setText(String.valueOf(cell.getPci()));
-        int rsrp = Math.abs((int)cell.getRsrp());
-        viewHolder.prorsrp.setProgress(rsrp);
-        int rsrq =  Math.abs((int)cell.getRsrq());
-        viewHolder.prorsrq.setProgress(rsrq);
-        viewHolder.txtrsrp.setText(String.valueOf(cell.getRsrp()));
-        viewHolder.txtrsrq.setText(String.valueOf(cell.getRsrq()));
+        }
+
         return convertView;
     }
 
