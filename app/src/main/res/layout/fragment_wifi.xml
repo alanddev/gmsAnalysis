@@ -23,6 +23,7 @@
             android:layout_height="match_parent">
             <!-- Preview: layout=@layout/device_detail -->
         </fragment>
+
         <Button
             android:id="@+id/buttonScan"
             android:layout_width="178dp"
@@ -40,5 +41,24 @@
             android:layout_centerVertical="true"
             android:layout_gravity="center"
             android:text="Receive" />
+
+        <Button
+            android:id="@+id/buttonFirstConnect"
+            android:layout_width="178dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:text="First Connect" />
+
+        <Button
+            android:id="@+id/buttonTestConnect"
+            android:layout_width="178dp"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_gravity="center"
+            android:text="Test Connect" />
+
     </LinearLayout>
 </LinearLayout>

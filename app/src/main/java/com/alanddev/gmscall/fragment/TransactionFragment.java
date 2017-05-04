@@ -213,6 +213,7 @@ public class TransactionFragment extends Fragment {
         net.setGround(ground);
         net.setSpeed(speed);
         setTitleValue();
+        //networkUtils.readLogwithTag("ANR_LOG");
 
         final CellAdapter adapter = new CellAdapter(getActivity().getApplicationContext(),cells);
         lstcell.setAdapter(adapter);
