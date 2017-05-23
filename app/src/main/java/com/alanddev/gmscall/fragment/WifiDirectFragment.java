@@ -28,6 +28,7 @@ import android.widget.Toast;
 import com.alanddev.gmscall.R;
 import com.alanddev.gmscall.ui.MainActivity;
 import com.alanddev.gmscall.ui.WiFiDirectBroadcastReceiver;
+import com.ptsp.phoneapi.PhoneApi;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
@@ -56,6 +57,9 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
     private BroadcastReceiver receiver = null;
     private Button btnScan;
     private Button btnReceiver;
+    private Button btnFirstConnect;
+    private Button btnTestConnect;
+    private PhoneApi phoneApi;
     private Thread Scan;
     private Thread threadReceive;
     public static WifiP2pConfig config;
@@ -94,6 +98,8 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
         receiver = new WiFiDirectBroadcastReceiver(manager, channel, this);
         btnScan = (Button)rootView.findViewById(R.id.buttonScan);
         btnReceiver = (Button)rootView.findViewById(R.id.buttonReceive);
+        btnFirstConnect = (Button)rootView.findViewById(R.id.buttonFirstConnect);
+        btnTestConnect = (Button)rootView.findViewById(R.id.buttonTestConnect);
         btnScan.setOnClickListener(new View.OnClickListener() {
 
             @Override
@@ -158,7 +164,41 @@ public class WifiDirectFragment extends Fragment implements WifiP2pManager.Chann
             }
         });
 
+        btnFirstConnect.setOnClickListener(new View.OnClickListener() {
 
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                //scanDevice();
+                phoneApi = new PhoneApi();
+                try {
+                    new Thread(new Runnable() {
+                        public void run() {
+                            phoneApi.voidInitialize_CMD();
+                        }
+                    }).start();
+                    String appId = "com.alanddev.gmscall/com.alanddev.gmscall.ui.MainActivity";
+                    phoneApi.voidP2A4G(appId);
+                }catch(Exception ex){
+                    ex.printStackTrace();
+                }
+            }
+        });
+
+        btnTestConnect.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                //scanDevice();
+                phoneApi = new PhoneApi();
+                try {
+                    phoneApi.voidGet_CSQ();
+                }catch(Exception ex){
+                    ex.printStackTrace();
+                }
+            }
+        });
         return rootView;
     }
 

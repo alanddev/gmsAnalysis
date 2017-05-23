@@ -1,5 +1,7 @@
 package com.alanddev.gmscall.util;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.util.List;
 
 
@@ -164,4 +166,24 @@ public class NwUtils {
 //		mHandler.postDelayed(mRunnable, 1000);
 //		}
 //		};
+
+	public String readLogwithTag(String tag){
+		Process logcat;
+		final StringBuilder log = new StringBuilder();
+		try {
+			logcat = Runtime.getRuntime().exec(new String[]{"logcat", "-d"});
+			BufferedReader br = new BufferedReader(new InputStreamReader(logcat.getInputStream()),4*1024);
+			String line;
+			String separator = System.getProperty("line.separator");
+			while ((line = br.readLine()) != null) {
+				if (line.contains(tag)) {
+					log.append(line);
+					log.append(separator);
+				}
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return log.toString();
+	}
 }
